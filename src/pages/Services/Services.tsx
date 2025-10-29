@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  Code, Layers, Palette, Megaphone, Shield, Zap, MonitorSmartphone, Search, Bot, GitBranch, Cloud, ArrowRight, Brain, Rocket,
+  Code, Layers, Palette, Megaphone, Shield, Zap, MonitorSmartphone, Search, Bot, GitBranch, Cloud, ArrowRight,Rocket,
 } from 'lucide-react';
 import Tilt from 'react-parallax-tilt';
 

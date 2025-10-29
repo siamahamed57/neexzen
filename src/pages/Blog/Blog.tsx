@@ -71,7 +71,6 @@ const Blog: React.FC = () => {
   const tags = ['AI', 'Cloud', 'SaaS', 'UI/UX', 'Security', 'Marketing', 'Development'];
 
   const [activeCategory, setActiveCategory] = React.useState('All');
-  const [searchTerm, setSearchTerm] = React.useState('');
 
  
 
