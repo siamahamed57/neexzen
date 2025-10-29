@@ -71,12 +71,16 @@ const Blog: React.FC = () => {
   const tags = ['AI', 'Cloud', 'SaaS', 'UI/UX', 'Security', 'Marketing', 'Development'];
 
   const [activeCategory, setActiveCategory] = React.useState('All');
-  const [ setSearchTerm] = React.useState('');
+  const [searchTerm, setSearchTerm] = React.useState('');
 
- 
+  const filteredPosts = posts.filter(post => {
+    const categoryMatch = activeCategory === 'All' || post.category === activeCategory;
+    const searchMatch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+    return categoryMatch && searchMatch;
+  });
 
   const featuredPosts = posts.filter(p => p.featured);
-  const latestPosts = posts.filter(p => !p.featured);
+  const latestPosts = filteredPosts.filter(p => !p.featured);
 
   return (
     <main className="relative bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-all duration-500 overflow-x-hidden">
