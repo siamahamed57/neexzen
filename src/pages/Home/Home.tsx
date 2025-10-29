@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Bot, ChevronDown, Code, Layers, Megaphone, Palette, PenTool, Rocket, Search, Shield, Users, Zap, Sparkles, Brain, TrendingUp, Award, Cpu } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Bot, ChevronDown, Code, Layers, Megaphone, Palette, PenTool, Rocket, Search, Shield, Users, Zap, Sparkles, Brain, TrendingUp, Award } from 'lucide-react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 
@@ -92,7 +92,7 @@ const Home = () => {
   const whyChooseUs = [
     { icon: <Sparkles size={24} />, text: 'Innovative and result-driven solutions', gradient: 'from-blue-500 to-cyan-400' },
     { icon: <Users size={24} />, text: 'Transparent and collaborative workflow', gradient: 'from-purple-500 to-pink-400' },
-    { icon: <Cpu size={24} />, text: 'AI-powered modern technologies', gradient: 'from-green-500 to-emerald-400' },
+    { icon: <Brain size={24} />, text: 'AI-powered modern technologies', gradient: 'from-green-500 to-emerald-400' },
     { icon: <Zap size={24} />, text: 'Dedicated support and maintenance', gradient: 'from-orange-500 to-yellow-400' },
     { icon: <TrendingUp size={24} />, text: 'Focused on ROI and measurable growth', gradient: 'from-red-500 to-rose-400' },
   ];
@@ -202,6 +202,7 @@ const Home = () => {
   const [testimonialIndex, setTestimonialIndex] = React.useState(0);
   const controls = useAnimation();
 
+
   const handleNext = () => {
     const newIndex = Math.min(testimonials.length - 3, testimonialIndex + 1);
     setTestimonialIndex(newIndex);
@@ -224,7 +225,7 @@ const Home = () => {
         {init && (
           <Particles
             id="tsparticles"
-            loaded={particlesLoaded}
+            {...({ loaded: particlesLoaded } as any)}
             className="absolute inset-0 -z-0"
             options={{
               background: {
@@ -268,13 +269,12 @@ const Home = () => {
                   speed: 1,
                   straight: false,
                 },
-                number: {
-                  density: {
-                    enable: true,
-                    value_area: 800,
-                  },
-                  value: 80,
+              number: {
+                density: {
+                  enable: true
                 },
+                value: 80,
+              },
                 opacity: { value: 0.2 },
                 shape: { type: "circle" },
                 size: { value: { min: 1, max: 3 } },
@@ -741,11 +741,9 @@ const Home = () => {
       {/* Orbiting Items (INSIDE the circle) */}
       {whyChooseUs.map((item, index) => {
         const angle = (index / whyChooseUs.length) * 2 * Math.PI - Math.PI / 2;
-        // Use numeric radius for positioning inside the circle
-        const radius = 190;
-        // Use calc() for responsive positioning based on percentage and pixels
-        const x = `calc(50% + ${radius * Math.cos(angle)}px)`;
-        const y = `calc(50% + ${radius * Math.sin(angle)}px)`;
+        const radius = 100; // smaller radius = inside circle
+        const x = `${45 + radius * Math.cos(angle) / 3.1}%`;
+        const y = `${40 + radius * Math.sin(angle) / 3.1}%`;
 
         return (
           <motion.div
@@ -804,7 +802,7 @@ const Home = () => {
                 <motion.div
                   className="flex gap-8"
                   drag="x"
-                  dragConstraints={{ right: 0, left: -(100 * (testimonials.length - 3)) / 3 + '%' }}
+                  dragConstraints={{ right: 0, left: -(100 * (testimonials.length - 3)) / 3 }}
                   animate={controls}
                   transition={{ type: 'spring', stiffness: 300, damping: 50 }}
                 >
