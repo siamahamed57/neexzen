@@ -92,7 +92,7 @@ const Home = () => {
   const whyChooseUs = [
     { icon: <Sparkles size={24} />, text: 'Innovative and result-driven solutions', gradient: 'from-blue-500 to-cyan-400' },
     { icon: <Users size={24} />, text: 'Transparent and collaborative workflow', gradient: 'from-purple-500 to-pink-400' },
-    { icon: <Brain size={24} />, text: 'AI-powered modern technologies', gradient: 'from-green-500 to-emerald-400' },
+    { icon: <Cpu size={24} />, text: 'AI-powered modern technologies', gradient: 'from-green-500 to-emerald-400' },
     { icon: <Zap size={24} />, text: 'Dedicated support and maintenance', gradient: 'from-orange-500 to-yellow-400' },
     { icon: <TrendingUp size={24} />, text: 'Focused on ROI and measurable growth', gradient: 'from-red-500 to-rose-400' },
   ];
@@ -201,7 +201,6 @@ const Home = () => {
   // Testimonial slider state and logic
   const [testimonialIndex, setTestimonialIndex] = React.useState(0);
   const controls = useAnimation();
-  const x = useMotionValue(0);
 
   const handleNext = () => {
     const newIndex = Math.min(testimonials.length - 3, testimonialIndex + 1);
@@ -272,7 +271,7 @@ const Home = () => {
                 number: {
                   density: {
                     enable: true,
-                    area: 800,
+                    value_area: 800,
                   },
                   value: 80,
                 },
@@ -742,7 +741,9 @@ const Home = () => {
       {/* Orbiting Items (INSIDE the circle) */}
       {whyChooseUs.map((item, index) => {
         const angle = (index / whyChooseUs.length) * 2 * Math.PI - Math.PI / 2;
-        const radius = 190; // smaller radius in pixels to be inside the circle
+        // Use numeric radius for positioning inside the circle
+        const radius = 190;
+        // Use calc() for responsive positioning based on percentage and pixels
         const x = `calc(50% + ${radius * Math.cos(angle)}px)`;
         const y = `calc(50% + ${radius * Math.sin(angle)}px)`;
 
