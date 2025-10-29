@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone, Bot, Cloud, Code, Monitor, Palette } from 'lucide-react';
+import { ArrowRight, Phone} from 'lucide-react';
 
 const Projects: React.FC = () => {
   const projectsList = [

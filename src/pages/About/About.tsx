@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+
 import {
   Users, Target, Eye, Award, Brain, Zap, Sparkles, Linkedin, Twitter, Github, ChevronDown, Rocket
 } from 'lucide-react';
@@ -92,7 +92,7 @@ const About: React.FC = () => {
           <div className="relative">
             <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500/20 via-purple-500/20 to-pink-500/20 hidden md:block" />
             <div className="space-y-16">
-              {journey.map((item, index) => (
+              {journey.map((item) => (
                 <div key={item.year} className={`relative md:flex items-center ${item.side === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   <div className="md:w-5/12">
                     <motion.div initial={{ opacity: 0, x: item.side === 'left' ? -50 : 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative p-8 rounded-2xl bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-gray-800">

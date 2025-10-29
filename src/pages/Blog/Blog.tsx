@@ -73,11 +73,7 @@ const Blog: React.FC = () => {
   const [activeCategory, setActiveCategory] = React.useState('All');
   const [searchTerm, setSearchTerm] = React.useState('');
 
-  const filteredPosts = posts.filter(post => {
-    const categoryMatch = activeCategory === 'All' || post.category === activeCategory;
-    const searchMatch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    return categoryMatch && searchMatch;
-  });
+ 
 
   const featuredPosts = posts.filter(p => p.featured);
   const latestPosts = posts.filter(p => !p.featured);
