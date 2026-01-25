@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Eye, Linkedin, Twitter, Github, ChevronDown, Sparkles, Users, Award, Zap } from 'lucide-react';
+import CursorGlow from '../../components/CursorGlow/CursorGlow';
 
 const About: React.FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+
   const journey = [
     { year: '2019', title: 'The Genesis', description: 'Founded with a mission to bridge business needs and technology.' },
     { year: '2020', title: 'First Major Project', description: 'Delivered a complex e-commerce platform, establishing our reputation.' },
@@ -40,10 +43,12 @@ const About: React.FC = () => {
   return (
     <main className="bg-black text-white">
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden">
+        <CursorGlow containerRef={heroRef} />
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/3 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[200px] animate-subtle-glow" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
+          <div className="absolute top-0 left-1/3 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[150px] animate-subtle-glow" />
+          <div className="absolute bottom-0 right-1/3 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[150px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-16">
@@ -67,7 +72,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-24 border-t border-neutral-800/50">
+      <section className="py-24 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="p-10 rounded-2xl bg-neutral-900/50 border border-neutral-800">
@@ -75,7 +80,7 @@ const About: React.FC = () => {
                 <Target size={26} />
               </div>
               <h2 className="font-display text-2xl font-bold text-white mb-4">Our Mission</h2>
-              <p className="text-neutral-400 leading-relaxed">
+              <p className="text-neutral-300 leading-relaxed">
                 To empower businesses with transformative technology, creating intelligent
                 software that drives growth, efficiency, and a competitive edge.
               </p>
@@ -86,7 +91,7 @@ const About: React.FC = () => {
                 <Eye size={26} />
               </div>
               <h2 className="font-display text-2xl font-bold text-white mb-4">Our Vision</h2>
-              <p className="text-neutral-400 leading-relaxed">
+              <p className="text-neutral-300 leading-relaxed">
                 To be a globally recognized leader in AI-driven innovation, known for
                 our commitment to quality, client success, and shaping future technology.
               </p>
@@ -96,7 +101,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Values */}
-      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800/50">
+      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <p className="section-label">What Drives Us</p>
@@ -110,7 +115,7 @@ const About: React.FC = () => {
                   {value.icon}
                 </div>
                 <h3 className="font-display text-lg font-semibold text-white mb-2">{value.title}</h3>
-                <p className="text-sm text-neutral-500">{value.description}</p>
+                <p className="text-sm text-neutral-400">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -118,7 +123,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Timeline */}
-      <section className="py-24 border-t border-neutral-800/50">
+      <section className="py-24 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <p className="section-label">Our Story</p>
@@ -126,7 +131,7 @@ const About: React.FC = () => {
           </motion.div>
 
           <div className="relative">
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500/50 via-blue-500/50 to-neutral-800" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500/50 via-blue-500/50 to-neutral-700" />
 
             <div className="space-y-12">
               {journey.map((item, index) => (
@@ -137,7 +142,7 @@ const About: React.FC = () => {
                     <div className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800">
                       <span className="text-sm text-purple-400 font-semibold">{item.year}</span>
                       <h3 className="font-display text-lg font-semibold text-white mt-1">{item.title}</h3>
-                      <p className="mt-2 text-sm text-neutral-500">{item.description}</p>
+                      <p className="mt-2 text-sm text-neutral-400">{item.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -148,7 +153,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Team */}
-      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800/50">
+      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <p className="section-label">Our Team</p>
@@ -158,15 +163,15 @@ const About: React.FC = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
               <motion.div key={member.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className="group text-center">
-                <div className="relative w-40 h-40 mx-auto rounded-full overflow-hidden mb-6 ring-2 ring-neutral-800 group-hover:ring-purple-500/50 transition-all">
+                <div className="relative w-40 h-40 mx-auto rounded-full overflow-hidden mb-6 ring-2 ring-neutral-700 group-hover:ring-purple-500/50 transition-all">
                   <img src={member.image} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                 </div>
                 <h3 className="font-display text-lg font-semibold text-white">{member.name}</h3>
-                <p className="text-sm text-neutral-500">{member.role}</p>
+                <p className="text-sm text-neutral-400">{member.role}</p>
                 <div className="mt-4 flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <a href="#" className="text-neutral-500 hover:text-white transition-colors"><Linkedin size={16} /></a>
-                  <a href="#" className="text-neutral-500 hover:text-white transition-colors"><Twitter size={16} /></a>
-                  <a href="#" className="text-neutral-500 hover:text-white transition-colors"><Github size={16} /></a>
+                  <a href="#" className="text-neutral-400 hover:text-white transition-colors"><Linkedin size={16} /></a>
+                  <a href="#" className="text-neutral-400 hover:text-white transition-colors"><Twitter size={16} /></a>
+                  <a href="#" className="text-neutral-400 hover:text-white transition-colors"><Github size={16} /></a>
                 </div>
               </motion.div>
             ))}
@@ -175,7 +180,7 @@ const About: React.FC = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 border-t border-neutral-800/50">
+      <section className="py-24 border-t border-neutral-800">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <p className="section-label">FAQ</p>
@@ -187,10 +192,10 @@ const About: React.FC = () => {
               <motion.div key={index} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: index * 0.1 }} className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-900/50">
                 <button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="w-full flex items-center justify-between p-6 text-left hover:bg-neutral-800/30 transition-colors">
                   <span className="font-display font-medium text-white">{faq.q}</span>
-                  <ChevronDown size={20} className={`text-neutral-500 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
+                  <ChevronDown size={20} className={`text-neutral-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
                 </button>
                 <motion.div initial={false} animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }} className="overflow-hidden">
-                  <p className="px-6 pb-6 text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
+                  <p className="px-6 pb-6 text-neutral-400 text-sm leading-relaxed">{faq.a}</p>
                 </motion.div>
               </motion.div>
             ))}
@@ -199,7 +204,7 @@ const About: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-32 border-t border-neutral-800/50 relative overflow-hidden">
+      <section className="py-32 border-t border-neutral-800 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/5 rounded-full blur-[200px]" />
         </div>
@@ -211,7 +216,7 @@ const About: React.FC = () => {
               <br />
               <span className="text-purple-400">With Us?</span>
             </h2>
-            <p className="mt-6 text-xl text-neutral-400 max-w-xl mx-auto">
+            <p className="mt-6 text-xl text-neutral-300 max-w-xl mx-auto">
               Let's build something extraordinary together.
             </p>
             <div className="mt-10">

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Layers, Palette, Megaphone, Shield, Zap, MonitorSmartphone, Bot, Cloud, Check } from 'lucide-react';
+import CursorGlow from '../../components/CursorGlow/CursorGlow';
 
 const Services: React.FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+
   const services = [
     { icon: <Code size={22} />, title: 'Web Development', category: 'Development', description: 'Modern, responsive, and high-performing websites built with the latest technologies.', features: ['React & Next.js', 'Custom CMS', 'E-commerce', 'Progressive Web Apps'] },
     { icon: <Palette size={22} />, title: 'UI/UX Design', category: 'Design', description: 'Intuitive interfaces and engaging experiences that convert visitors into customers.', features: ['User Research', 'Prototyping', 'Design Systems', 'Usability Testing'] },
@@ -34,10 +37,12 @@ const Services: React.FC = () => {
   return (
     <main className="bg-black text-white">
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden">
+        <CursorGlow containerRef={heroRef} />
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[200px] animate-subtle-glow" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
+          <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[150px] animate-subtle-glow" />
+          <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[150px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-16">
@@ -61,7 +66,7 @@ const Services: React.FC = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 border-t border-neutral-800/50">
+      <section className="py-24 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Filters */}
           <div className="flex flex-wrap gap-3 mb-16">
@@ -71,7 +76,7 @@ const Services: React.FC = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${activeCategory === category
                     ? 'bg-white text-black'
-                    : 'bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800 hover:border-neutral-700'
+                    : 'bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-700 hover:border-neutral-600'
                   }`}
               >
                 {category}
@@ -94,11 +99,11 @@ const Services: React.FC = () => {
                 </div>
                 <span className="inline-block mt-5 text-xs text-purple-400 font-medium uppercase tracking-wider">{service.category}</span>
                 <h3 className="font-display text-lg font-semibold text-white mt-1 mb-2">{service.title}</h3>
-                <p className="text-neutral-500 text-sm leading-relaxed mb-5">{service.description}</p>
+                <p className="text-neutral-400 text-sm leading-relaxed mb-5">{service.description}</p>
 
                 <ul className="space-y-2">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2.5 text-sm text-neutral-500">
+                    <li key={feature} className="flex items-center gap-2.5 text-sm text-neutral-400">
                       <Check size={14} className="text-purple-400" />
                       {feature}
                     </li>
@@ -111,7 +116,7 @@ const Services: React.FC = () => {
       </section>
 
       {/* Technologies */}
-      <section className="py-24 border-t border-neutral-800/50">
+      <section className="py-24 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <p className="section-label">Our Stack</p>
@@ -126,7 +131,7 @@ const Services: React.FC = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="px-5 py-2.5 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 text-sm font-medium hover:bg-neutral-800 hover:text-white hover:border-neutral-700 transition-all"
+                className="px-5 py-2.5 rounded-full bg-neutral-900 border border-neutral-700 text-neutral-300 text-sm font-medium hover:bg-neutral-800 hover:text-white hover:border-neutral-600 transition-all"
               >
                 {tech}
               </motion.div>
@@ -136,7 +141,7 @@ const Services: React.FC = () => {
       </section>
 
       {/* Process */}
-      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800/50">
+      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <p className="section-label">Our Process</p>
@@ -146,9 +151,9 @@ const Services: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {processSteps.map((step, index) => (
               <motion.div key={step.number} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }}>
-                <span className="font-display text-6xl font-bold text-purple-500/10">{step.number}</span>
+                <span className="font-display text-6xl font-bold text-purple-400/50">{step.number}</span>
                 <h3 className="font-display text-xl font-semibold text-white mt-2">{step.title}</h3>
-                <p className="mt-2 text-sm text-neutral-500">{step.description}</p>
+                <p className="mt-2 text-sm text-neutral-400">{step.description}</p>
               </motion.div>
             ))}
           </div>
@@ -156,7 +161,7 @@ const Services: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-32 border-t border-neutral-800/50 relative overflow-hidden">
+      <section className="py-32 border-t border-neutral-800 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/5 rounded-full blur-[200px]" />
         </div>
@@ -168,7 +173,7 @@ const Services: React.FC = () => {
               <br />
               <span className="text-purple-400">in Mind?</span>
             </h2>
-            <p className="mt-6 text-xl text-neutral-400 max-w-xl mx-auto">
+            <p className="mt-6 text-xl text-neutral-300 max-w-xl mx-auto">
               Let's discuss how we can turn your ideas into reality.
             </p>
             <div className="mt-10">

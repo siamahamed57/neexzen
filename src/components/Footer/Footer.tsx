@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-black border-t border-neutral-800/50">
+    <footer className="bg-black border-t border-neutral-800">
       {/* Main */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8">
@@ -45,21 +45,21 @@ const Footer: React.FC = () => {
             <Link to="/" className="inline-block">
               <span className="text-2xl font-display font-bold text-white">neexzen</span>
             </Link>
-            <p className="mt-6 text-neutral-500 text-sm leading-relaxed max-w-sm">
+            <p className="mt-6 text-neutral-400 text-sm leading-relaxed max-w-sm">
               Building breakthrough software solutions for the modern enterprise.
               We transform ideas into powerful digital experiences.
             </p>
 
             <div className="mt-8 space-y-3">
-              <a href="mailto:info@neexzen.com" className="flex items-center gap-3 text-sm text-neutral-500 hover:text-white transition-colors">
+              <a href="mailto:info@neexzen.com" className="flex items-center gap-3 text-sm text-neutral-400 hover:text-white transition-colors">
                 <Mail size={16} className="text-purple-400" />
                 info@neexzen.com
               </a>
-              <a href="tel:+8801304984437" className="flex items-center gap-3 text-sm text-neutral-500 hover:text-white transition-colors">
+              <a href="tel:+8801304984437" className="flex items-center gap-3 text-sm text-neutral-400 hover:text-white transition-colors">
                 <Phone size={16} className="text-purple-400" />
                 +880 1304 984 437
               </a>
-              <div className="flex items-center gap-3 text-sm text-neutral-500">
+              <div className="flex items-center gap-3 text-sm text-neutral-400">
                 <MapPin size={16} className="text-purple-400" />
                 Bashundhara R/A, Dhaka
               </div>
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-500 hover:text-white hover:bg-purple-500/10 hover:border-purple-500/30 transition-all"
+                  className="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-purple-500/10 hover:border-purple-500/30 transition-all"
                 >
                   {social.icon}
                 </a>
@@ -85,7 +85,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.href} className="text-sm text-neutral-500 hover:text-white transition-colors">
+                  <Link to={link.href} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.href} className="text-sm text-neutral-500 hover:text-white transition-colors">
+                  <Link to={link.href} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <Link to={link.href} className="text-sm text-neutral-500 hover:text-white transition-colors">
+                  <Link to={link.href} className="text-sm text-neutral-400 hover:text-white transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="font-display text-xl font-bold text-white">Ready to start your project?</h3>
-              <p className="mt-1 text-sm text-neutral-400">Let's discuss how we can help transform your business.</p>
+              <p className="mt-1 text-sm text-neutral-300">Let's discuss how we can help transform your business.</p>
             </div>
             <Link
               to="/contact"
@@ -139,13 +139,13 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom */}
-      <div className="border-t border-neutral-800/50">
+      <div className="border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-neutral-600">
+            <p className="text-sm text-neutral-500">
               © {currentYear} Neexzen. All rights reserved.
             </p>
-            <div className="flex items-center gap-6 text-sm text-neutral-600">
+            <div className="flex items-center gap-6 text-sm text-neutral-500">
               <Link to="#" className="hover:text-white transition-colors">Privacy</Link>
               <Link to="#" className="hover:text-white transition-colors">Terms</Link>
               <Link to="#" className="hover:text-white transition-colors">Cookies</Link>

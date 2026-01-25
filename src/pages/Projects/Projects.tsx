@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink } from 'lucide-react';
+import CursorGlow from '../../components/CursorGlow/CursorGlow';
 
 const Projects: React.FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+
   const projects = [
     { id: 1, title: 'Predictive Analytics Dashboard', category: 'AI & ML', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop', technologies: ['Python', 'TensorFlow', 'React', 'D3.js'], description: 'Real-time analytics with predictive modeling.' },
     { id: 2, title: 'Multi-Cloud Management', category: 'Cloud', image: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1931&auto=format&fit=crop', technologies: ['Go', 'Kubernetes', 'AWS', 'GCP'], description: 'Enterprise cloud infrastructure management.' },
@@ -20,10 +23,12 @@ const Projects: React.FC = () => {
   return (
     <main className="bg-black text-white">
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden">
+        <CursorGlow containerRef={heroRef} />
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[200px] animate-subtle-glow" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
+          <div className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[150px] animate-subtle-glow" />
+          <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-purple-500/15 rounded-full blur-[150px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-16">
@@ -47,7 +52,7 @@ const Projects: React.FC = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-24 border-t border-neutral-800/50">
+      <section className="py-24 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Filters */}
           <div className="flex flex-wrap gap-3 mb-16">
@@ -57,7 +62,7 @@ const Projects: React.FC = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${activeCategory === category
                     ? 'bg-white text-black'
-                    : 'bg-neutral-900 text-neutral-400 hover:text-white border border-neutral-800 hover:border-neutral-700'
+                    : 'bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-700 hover:border-neutral-600'
                   }`}
               >
                 {category}
@@ -85,11 +90,11 @@ const Projects: React.FC = () => {
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
                     <span className="text-xs text-blue-400 font-medium uppercase tracking-wider mb-2">{project.category}</span>
                     <h3 className="font-display text-2xl font-bold text-white mb-2">{project.title}</h3>
-                    <p className="text-sm text-neutral-400 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{project.description}</p>
+                    <p className="text-sm text-neutral-300 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{project.description}</p>
 
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
-                        <span key={tech} className="text-xs text-neutral-500 bg-neutral-800 px-3 py-1 rounded-full">{tech}</span>
+                        <span key={tech} className="text-xs text-neutral-400 bg-neutral-800 px-3 py-1 rounded-full">{tech}</span>
                       ))}
                     </div>
                   </div>
@@ -105,7 +110,7 @@ const Projects: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-32 border-t border-neutral-800/50 relative overflow-hidden">
+      <section className="py-32 border-t border-neutral-800 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[200px]" />
         </div>
@@ -117,7 +122,7 @@ const Projects: React.FC = () => {
               <br />
               <span className="text-blue-400">in Mind?</span>
             </h2>
-            <p className="mt-6 text-xl text-neutral-400 max-w-xl mx-auto">
+            <p className="mt-6 text-xl text-neutral-300 max-w-xl mx-auto">
               Let's collaborate to bring your vision to life.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">

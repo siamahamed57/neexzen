@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, ChevronDown, Send } from 'lucide-react';
+import CursorGlow from '../../components/CursorGlow/CursorGlow';
 
 const Contact: React.FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+
   const contactInfo = [
     { icon: <Mail size={20} />, label: 'Email', value: 'info@neexzen.com', href: 'mailto:info@neexzen.com' },
     { icon: <Phone size={20} />, label: 'Phone', value: '+880 1304 984 437', href: 'tel:+8801304984437' },
@@ -22,10 +25,12 @@ const Contact: React.FC = () => {
   return (
     <main className="bg-black text-white">
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[50vh] flex items-center overflow-hidden">
+        <CursorGlow containerRef={heroRef} />
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/3 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[200px] animate-subtle-glow" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
+          <div className="absolute top-0 left-1/3 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[150px] animate-subtle-glow" />
+          <div className="absolute bottom-0 right-1/3 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[150px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-16">
@@ -49,7 +54,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Form & Info */}
-      <section className="py-20 border-t border-neutral-800/50">
+      <section className="py-20 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-16">
             {/* Form */}
@@ -60,22 +65,22 @@ const Contact: React.FC = () => {
                 <form className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm text-neutral-400 mb-2">Your Name</label>
+                      <label htmlFor="name" className="block text-sm text-neutral-300 mb-2">Your Name</label>
                       <input type="text" id="name" className="input" placeholder="John Doe" />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm text-neutral-400 mb-2">Email Address</label>
+                      <label htmlFor="email" className="block text-sm text-neutral-300 mb-2">Email Address</label>
                       <input type="email" id="email" className="input" placeholder="you@example.com" />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-sm text-neutral-400 mb-2">Company (Optional)</label>
+                    <label htmlFor="company" className="block text-sm text-neutral-300 mb-2">Company (Optional)</label>
                     <input type="text" id="company" className="input" placeholder="Your Company" />
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm text-neutral-400 mb-2">What can we help with?</label>
+                    <label htmlFor="service" className="block text-sm text-neutral-300 mb-2">What can we help with?</label>
                     <select id="service" className="input">
                       <option value="" className="bg-black">Select a service</option>
                       <option value="web" className="bg-black">Web Development</option>
@@ -88,7 +93,7 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm text-neutral-400 mb-2">Project Details</label>
+                    <label htmlFor="message" className="block text-sm text-neutral-300 mb-2">Project Details</label>
                     <textarea id="message" rows={5} className="input resize-none" placeholder="Tell us about your project, timeline, and budget..." />
                   </div>
 
@@ -108,7 +113,7 @@ const Contact: React.FC = () => {
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-sm text-neutral-500">{item.label}</p>
+                    <p className="text-sm text-neutral-400">{item.label}</p>
                     <p className="font-display font-medium text-white">{item.value}</p>
                   </div>
                 </a>
@@ -130,7 +135,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800/50">
+      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <p className="section-label">FAQ</p>
@@ -142,10 +147,10 @@ const Contact: React.FC = () => {
               <motion.div key={index} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: index * 0.1 }} className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-900/50">
                 <button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="w-full flex items-center justify-between p-6 text-left hover:bg-neutral-800/30 transition-colors">
                   <span className="font-display font-medium text-white">{faq.q}</span>
-                  <ChevronDown size={20} className={`text-neutral-500 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
+                  <ChevronDown size={20} className={`text-neutral-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
                 </button>
                 <motion.div initial={false} animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }} className="overflow-hidden">
-                  <p className="px-6 pb-6 text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
+                  <p className="px-6 pb-6 text-neutral-400 text-sm leading-relaxed">{faq.a}</p>
                 </motion.div>
               </motion.div>
             ))}

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Layers, Shield, ChevronDown, Bot, Megaphone, PenTool, Play } from 'lucide-react';
+import Hero3D from '../../components/Hero3D/Hero3D';
 
 const Home: React.FC = () => {
   const services = [
@@ -54,7 +55,7 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-8 lg:py-0">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-8 lg:py-12">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <motion.div
@@ -77,8 +78,8 @@ const Home: React.FC = () => {
               {/* Headline */}
               <h1 className="hero-title">
                 <span className="block text-white">We Build</span>
-                <span className="block text-purple-400">Digital Products</span>
-                <span className="block text-neutral-500">That Matter</span>
+                <span className="block text-shimmer">Digital Products</span>
+                <span className="block text-neutral-400">That Matter</span>
               </h1>
 
               <p className="hero-subtitle mt-6 mx-auto lg:mx-0">
@@ -100,10 +101,10 @@ const Home: React.FC = () => {
 
               {/* Trust */}
               <div className="mt-8 pt-6 border-t border-neutral-800 hidden lg:block">
-                <p className="text-xs text-neutral-500 mb-3">Trusted by innovative companies</p>
+                <p className="text-xs text-neutral-400 mb-3">Trusted by innovative companies</p>
                 <div className="flex flex-wrap items-center gap-5">
                   {clients.slice(0, 4).map((client) => (
-                    <span key={client} className="text-sm font-display font-medium text-neutral-600 hover:text-white transition-colors">
+                    <span key={client} className="text-sm font-display font-medium text-neutral-500 hover:text-white transition-colors">
                       {client}
                     </span>
                   ))}
@@ -116,40 +117,29 @@ const Home: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="relative flex items-center justify-center lg:-mt-8"
+              className="relative flex items-center justify-center"
             >
-              <div className="relative w-full max-w-md aspect-square perspective-container">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute w-64 h-64 rounded-full border border-purple-500/20 animate-[spin_20s_linear_infinite]" />
-                  <div className="absolute w-80 h-80 rounded-full border border-neutral-800 animate-[spin_30s_linear_infinite_reverse]" />
-
-                  <motion.div
-                    animate={{ rotateY: [0, 360], rotateX: [0, 10, 0, -10, 0] }}
-                    transition={{ rotateY: { duration: 20, repeat: Infinity, ease: 'linear' }, rotateX: { duration: 8, repeat: Infinity, ease: 'easeInOut' } }}
-                    className="relative transform-3d"
-                    style={{ transformStyle: 'preserve-3d' }}
-                  >
-                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-purple-500/10 border border-purple-500/20 rounded-2xl backdrop-blur-sm" style={{ transform: 'translateZ(50px)' }} />
-                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-blue-500/10 border border-blue-500/20 rounded-2xl backdrop-blur-sm" style={{ transform: 'translateZ(-50px) rotateY(180deg)' }} />
-                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-neutral-900 border border-neutral-800 rounded-2xl" style={{ transform: 'translateX(-50px) rotateY(-90deg)' }} />
-                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-neutral-900 border border-neutral-800 rounded-2xl" style={{ transform: 'translateX(50px) rotateY(90deg)' }} />
-                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-neutral-800/50 border border-neutral-700 rounded-2xl" style={{ transform: 'translateY(-50px) rotateX(90deg)' }} />
-                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-neutral-900 border border-neutral-800 rounded-2xl" style={{ transform: 'translateY(50px) rotateX(-90deg)' }} />
-                  </motion.div>
-                </div>
+              <div className="relative w-full max-w-lg aspect-square">
+                <Suspense fallback={
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-32 h-32 rounded-full border-2 border-purple-500/30 border-t-purple-500 animate-spin" />
+                  </div>
+                }>
+                  <Hero3D />
+                </Suspense>
 
                 {/* Floating Cards */}
                 <motion.div
                   animate={{ y: [0, -12, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -top-2 right-0 p-3 rounded-xl bg-neutral-900 border border-neutral-800"
+                  className="absolute top-8 right-0 p-3 rounded-xl bg-neutral-900/90 border border-neutral-700 backdrop-blur-sm z-10"
                 >
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-purple-500 flex items-center justify-center">
                       <Bot size={16} className="text-white" />
                     </div>
                     <div>
-                      <p className="text-[10px] text-neutral-500">AI Integration</p>
+                      <p className="text-[10px] text-neutral-400">AI Integration</p>
                       <p className="text-xs font-medium text-white">GPT-4 Ready</p>
                     </div>
                   </div>
@@ -158,14 +148,14 @@ const Home: React.FC = () => {
                 <motion.div
                   animate={{ y: [0, 12, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                  className="absolute -bottom-2 left-0 p-3 rounded-xl bg-neutral-900 border border-neutral-800"
+                  className="absolute bottom-8 left-0 p-3 rounded-xl bg-neutral-900/90 border border-neutral-700 backdrop-blur-sm z-10"
                 >
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center">
                       <Code size={16} className="text-white" />
                     </div>
                     <div>
-                      <p className="text-[10px] text-neutral-500">Full Stack</p>
+                      <p className="text-[10px] text-neutral-400">Full Stack</p>
                       <p className="text-xs font-medium text-white">React + Node</p>
                     </div>
                   </div>
@@ -185,7 +175,7 @@ const Home: React.FC = () => {
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-5 h-8 rounded-full border-2 border-neutral-700 flex items-start justify-center p-1.5"
+            className="w-5 h-8 rounded-full border-2 border-neutral-600 flex items-start justify-center p-1.5"
           >
             <div className="w-1 h-1.5 rounded-full bg-purple-400" />
           </motion.div>
@@ -193,15 +183,15 @@ const Home: React.FC = () => {
       </section>
 
       {/* Client Marquee */}
-      <section className="py-6 border-y border-neutral-800/50">
+      <section className="py-6 border-y border-neutral-800">
         <div className="relative overflow-hidden">
           <motion.div
-            className="flex gap-16"
+            className="flex gap-24"
             animate={{ x: ['0%', '-50%'] }}
             transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
           >
             {[...clients, ...clients].map((client, index) => (
-              <span key={index} className="text-lg font-display font-medium text-neutral-700 hover:text-white whitespace-nowrap transition-colors cursor-default">
+              <span key={index} className="text-lg font-display font-medium text-neutral-500 hover:text-white whitespace-nowrap transition-colors cursor-default">
                 {client}
               </span>
             ))}
@@ -220,10 +210,10 @@ const Home: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-10 rounded-3xl bg-neutral-900/50 border border-neutral-800"
+                className="text-center p-10 rounded-3xl bg-neutral-900/50 border border-neutral-800 card-3d card-glow gradient-border"
               >
                 <p className="font-display text-5xl md:text-6xl font-bold text-white">{stat.value}</p>
-                <p className="mt-3 text-sm text-neutral-500 uppercase tracking-wider">{stat.label}</p>
+                <p className="mt-3 text-sm text-neutral-400 uppercase tracking-wider">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -231,7 +221,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Services */}
-      <section className="py-24 border-t border-neutral-800/50">
+      <section className="py-24 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -251,19 +241,19 @@ const Home: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group p-7 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 hover:bg-neutral-900 transition-all duration-300"
+                className="group p-7 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-purple-500/30 hover:bg-neutral-900 transition-all duration-300 card-3d"
               >
                 <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white group-hover:border-purple-500 transition-all duration-300">
                   {service.icon}
                 </div>
                 <h3 className="font-display text-lg font-semibold text-white mt-5 mb-2">{service.title}</h3>
-                <p className="text-neutral-500 text-sm leading-relaxed">{service.description}</p>
+                <p className="text-neutral-400 text-sm leading-relaxed">{service.description}</p>
               </motion.div>
             ))}
           </div>
 
           <div className="mt-14 text-center">
-            <Link to="/services" className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors group">
+            <Link to="/services" className="inline-flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition-colors group">
               View all services <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -271,7 +261,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Process */}
-      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800/50">
+      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -292,9 +282,9 @@ const Home: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <span className="font-display text-7xl font-bold text-purple-500/10">{step.number}</span>
+                <span className="font-display text-7xl font-bold text-purple-400/50">{step.number}</span>
                 <h3 className="font-display text-xl font-semibold text-white mt-2">{step.title}</h3>
-                <p className="mt-3 text-sm text-neutral-500 leading-relaxed">{step.description}</p>
+                <p className="mt-3 text-sm text-neutral-400 leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
           </div>
@@ -302,7 +292,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 border-t border-neutral-800/50">
+      <section className="py-24 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -322,12 +312,12 @@ const Home: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-8 rounded-2xl bg-neutral-900/50 border border-neutral-800"
+                className="p-8 rounded-2xl bg-neutral-900/50 border border-neutral-800 card-3d hover:border-purple-500/20"
               >
-                <p className="text-neutral-400 leading-relaxed mb-6">"{item.quote}"</p>
+                <p className="text-neutral-300 leading-relaxed mb-6">"{item.quote}"</p>
                 <div>
                   <p className="font-display font-semibold text-white">{item.author}</p>
-                  <p className="text-sm text-neutral-500">{item.role}</p>
+                  <p className="text-sm text-neutral-400">{item.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -336,7 +326,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800/50">
+      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -363,14 +353,14 @@ const Home: React.FC = () => {
                   className="w-full flex items-center justify-between p-6 text-left hover:bg-neutral-800/30 transition-colors"
                 >
                   <span className="font-display font-medium text-white">{faq.q}</span>
-                  <ChevronDown size={20} className={`text-neutral-500 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
+                  <ChevronDown size={20} className={`text-neutral-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
                 </button>
                 <motion.div
                   initial={false}
                   animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="px-6 pb-6 text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
+                  <p className="px-6 pb-6 text-neutral-400 text-sm leading-relaxed">{faq.a}</p>
                 </motion.div>
               </motion.div>
             ))}
@@ -379,7 +369,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-32 border-t border-neutral-800/50 relative overflow-hidden">
+      <section className="py-32 border-t border-neutral-800 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/5 rounded-full blur-[200px]" />
         </div>
@@ -393,9 +383,9 @@ const Home: React.FC = () => {
             <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
               <span className="text-white">Ready to Build</span>
               <br />
-              <span className="text-purple-400">Something Great?</span>
+              <span className="text-shimmer">Something Great?</span>
             </h2>
-            <p className="mt-8 text-xl text-neutral-400 max-w-xl mx-auto">
+            <p className="mt-8 text-xl text-neutral-300 max-w-xl mx-auto">
               Let's transform your ideas into reality.
             </p>
             <div className="mt-12">

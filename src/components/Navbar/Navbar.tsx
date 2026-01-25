@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
                   <NavLink
                     to={item.path}
                     className={({ isActive }) =>
-                      `px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center gap-1 ${isActive ? 'text-white' : 'text-neutral-400 hover:text-white'
+                      `px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center gap-1 ${isActive ? 'text-white' : 'text-neutral-300 hover:text-white'
                       }`
                     }
                   >
@@ -105,7 +105,7 @@ const Navbar: React.FC = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.96 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 mt-2 py-2 w-72 bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl overflow-hidden"
+                        className="absolute top-full left-0 mt-2 py-2 w-72 bg-neutral-900 border border-neutral-700 rounded-2xl shadow-2xl overflow-hidden"
                       >
                         {item.dropdown.map((dropItem) => (
                           <Link
@@ -118,7 +118,7 @@ const Navbar: React.FC = () => {
                             </div>
                             <div>
                               <p className="text-sm font-medium text-white">{dropItem.name}</p>
-                              <p className="text-xs text-neutral-500">{dropItem.description}</p>
+                              <p className="text-xs text-neutral-400">{dropItem.description}</p>
                             </div>
                           </Link>
                         ))}
@@ -165,12 +165,12 @@ const Navbar: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-neutral-900 border-l border-neutral-800 z-50 lg:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-neutral-900 border-l border-neutral-700 z-50 lg:hidden overflow-y-auto"
             >
               <div className="p-6">
                 <div className="flex items-center justify-between mb-8">
                   <span className="text-xl font-display font-bold text-white">Menu</span>
-                  <button onClick={() => setIsOpen(false)} className="p-2 text-neutral-400 hover:text-white hover:bg-neutral-800 rounded-lg transition-colors">
+                  <button onClick={() => setIsOpen(false)} className="p-2 text-neutral-300 hover:text-white hover:bg-neutral-800 rounded-lg transition-colors">
                     <X size={24} />
                   </button>
                 </div>
@@ -181,7 +181,7 @@ const Navbar: React.FC = () => {
                       key={item.name}
                       to={item.path}
                       className={({ isActive }) =>
-                        `block px-4 py-3 text-lg font-medium rounded-xl transition-all ${isActive ? 'text-white bg-neutral-800' : 'text-neutral-400 hover:text-white hover:bg-neutral-800'
+                        `block px-4 py-3 text-lg font-medium rounded-xl transition-all ${isActive ? 'text-white bg-neutral-800' : 'text-neutral-300 hover:text-white hover:bg-neutral-800'
                         }`
                       }
                     >
@@ -190,7 +190,7 @@ const Navbar: React.FC = () => {
                   ))}
                 </nav>
 
-                <div className="mt-8 pt-8 border-t border-neutral-800">
+                <div className="mt-8 pt-8 border-t border-neutral-700">
                   <Link
                     to="/contact"
                     onClick={() => setIsOpen(false)}
