@@ -1,160 +1,155 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Twitter, Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Mail, Phone, MapPin, Linkedin, Twitter, Github, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
   const footerLinks = {
-    product: [
-      { name: 'Services', path: '/services' },
-      { name: 'Projects', path: '/projects' },
-      { name: 'Case Studies', path: '/projects' },
-      { name: 'Pricing', path: '/contact' },
+    services: [
+      { name: 'Web Development', href: '/services' },
+      { name: 'AI & Machine Learning', href: '/services' },
+      { name: 'UI/UX Design', href: '/services' },
+      { name: 'Software & SaaS', href: '/services' },
+      { name: 'Digital Marketing', href: '/services' },
     ],
     company: [
-      { name: 'About', path: '/about' },
-      { name: 'Blog', path: '/blog' },
-      { name: 'Careers', path: '/about' },
-      { name: 'Contact', path: '/contact' },
+      { name: 'About Us', href: '/about' },
+      { name: 'Projects', href: '/projects' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'Careers', href: '/contact' },
+      { name: 'Contact', href: '/contact' },
     ],
     resources: [
-      { name: 'Documentation', path: '#' },
-      { name: 'Support', path: '/contact' },
-      { name: 'Community', path: '#' },
-    ],
-    legal: [
-      { name: 'Privacy Policy', path: '#' },
-      { name: 'Terms of Service', path: '#' },
-      { name: 'Cookie Policy', path: '#' },
+      { name: 'Case Studies', href: '/projects' },
+      { name: 'Documentation', href: '/blog' },
+      { name: 'Privacy Policy', href: '#' },
+      { name: 'Terms of Service', href: '#' },
     ],
   };
 
+  const socialLinks = [
+    { icon: <Linkedin size={18} />, href: '#', label: 'LinkedIn' },
+    { icon: <Twitter size={18} />, href: '#', label: 'Twitter' },
+    { icon: <Github size={18} />, href: '#', label: 'GitHub' },
+    { icon: <Instagram size={18} />, href: '#', label: 'Instagram' },
+  ];
+
   return (
-    <footer className="bg-black border-t border-white/5">
-      {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        {/* Top Section */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 pb-12 border-b border-white/5">
-          <div>
-            <Link to="/" className="text-2xl font-semibold text-white">
-              neexzen
+    <footer className="bg-black border-t border-neutral-800/50">
+      {/* Main */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-8">
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <Link to="/" className="inline-block">
+              <span className="text-2xl font-display font-bold text-white">neexzen</span>
             </Link>
-            <p className="mt-4 text-gray-500 max-w-md leading-relaxed">
-              Building breakthrough AI-powered software solutions for the modern enterprise.
-              From idea to deployment, we transform businesses.
+            <p className="mt-6 text-neutral-500 text-sm leading-relaxed max-w-sm">
+              Building breakthrough software solutions for the modern enterprise.
+              We transform ideas into powerful digital experiences.
             </p>
 
-            {/* Newsletter */}
-            <form className="mt-8 flex gap-3 max-w-md">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-full text-white placeholder-gray-500 text-sm focus:outline-none focus:border-purple-500/50 transition-colors"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-gray-200 transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
+            <div className="mt-8 space-y-3">
+              <a href="mailto:info@neexzen.com" className="flex items-center gap-3 text-sm text-neutral-500 hover:text-white transition-colors">
+                <Mail size={16} className="text-purple-400" />
+                info@neexzen.com
+              </a>
+              <a href="tel:+8801304984437" className="flex items-center gap-3 text-sm text-neutral-500 hover:text-white transition-colors">
+                <Phone size={16} className="text-purple-400" />
+                +880 1304 984 437
+              </a>
+              <div className="flex items-center gap-3 text-sm text-neutral-500">
+                <MapPin size={16} className="text-purple-400" />
+                Bashundhara R/A, Dhaka
+              </div>
+            </div>
+
+            <div className="mt-8 flex gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-500 hover:text-white hover:bg-purple-500/10 hover:border-purple-500/30 transition-all"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Links Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-            <div>
-              <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Product</h4>
-              <ul className="space-y-3">
-                {footerLinks.product.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.path}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Company</h4>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.path}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Resources</h4>
-              <ul className="space-y-3">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.path}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-4">Legal</h4>
-              <ul className="space-y-3">
-                {footerLinks.legal.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.path}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Links */}
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-6">Services</h4>
+            <ul className="space-y-3">
+              {footerLinks.services.map((link) => (
+                <li key={link.name}>
+                  <Link to={link.href} className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-6">Company</h4>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.name}>
+                  <Link to={link.href} className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-6">Resources</h4>
+            <ul className="space-y-3">
+              {footerLinks.resources.map((link) => (
+                <li key={link.name}>
+                  <Link to={link.href} className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} Neexzen. All rights reserved.
-          </p>
+        {/* CTA */}
+        <div className="mt-20 p-8 rounded-2xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="font-display text-xl font-bold text-white">Ready to start your project?</h3>
+              <p className="mt-1 text-sm text-neutral-400">Let's discuss how we can help transform your business.</p>
+            </div>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-black bg-white hover:bg-neutral-100 rounded-full transition-all group"
+            >
+              Get in Touch
+              <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-500 hover:text-white transition-colors"
-            >
-              <Twitter size={18} />
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-500 hover:text-white transition-colors"
-            >
-              <Github size={18} />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-gray-500 hover:text-white transition-colors"
-            >
-              <Linkedin size={18} />
-            </a>
+      {/* Bottom */}
+      <div className="border-t border-neutral-800/50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-neutral-600">
+              © {currentYear} Neexzen. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6 text-sm text-neutral-600">
+              <Link to="#" className="hover:text-white transition-colors">Privacy</Link>
+              <Link to="#" className="hover:text-white transition-colors">Terms</Link>
+              <Link to="#" className="hover:text-white transition-colors">Cookies</Link>
+            </div>
           </div>
         </div>
       </div>

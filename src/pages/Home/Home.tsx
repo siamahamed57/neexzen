@@ -5,12 +5,12 @@ import { ArrowRight, Code, Layers, Shield, ChevronDown, Bot, Megaphone, PenTool,
 
 const Home: React.FC = () => {
   const services = [
-    { icon: <Code size={24} />, title: 'Web Development', description: 'Modern, scalable web applications built with cutting-edge technology.' },
-    { icon: <PenTool size={24} />, title: 'UI/UX Design', description: 'Crafting intuitive interfaces and engaging user experiences.' },
-    { icon: <Megaphone size={24} />, title: 'Digital Marketing', description: 'Strategic SEO, Meta Pixel & GTM integrations for maximum ROI.' },
-    { icon: <Bot size={24} />, title: 'AI & Machine Learning', description: 'Intelligent systems to automate and optimize operations.' },
-    { icon: <Layers size={24} />, title: 'Software & SaaS', description: 'Building bespoke applications and scalable SaaS platforms.' },
-    { icon: <Shield size={24} />, title: 'Cybersecurity', description: 'Robust security solutions and blazing-fast performance.' },
+    { icon: <Code size={22} />, title: 'Web Development', description: 'Modern, scalable web applications built with cutting-edge technology.' },
+    { icon: <PenTool size={22} />, title: 'UI/UX Design', description: 'Crafting intuitive interfaces and engaging user experiences.' },
+    { icon: <Megaphone size={22} />, title: 'Digital Marketing', description: 'Strategic SEO, Meta Pixel & GTM integrations for maximum ROI.' },
+    { icon: <Bot size={22} />, title: 'AI & Machine Learning', description: 'Intelligent systems to automate and optimize operations.' },
+    { icon: <Layers size={22} />, title: 'Software & SaaS', description: 'Building bespoke applications and scalable SaaS platforms.' },
+    { icon: <Shield size={22} />, title: 'Cybersecurity', description: 'Robust security solutions and blazing-fast performance.' },
   ];
 
   const stats = [
@@ -45,22 +45,17 @@ const Home: React.FC = () => {
 
   return (
     <main className="bg-black text-white overflow-hidden">
-      {/* Hero Section - Slick & Modern with 3D Elements */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Animated Background Gradients */}
+      {/* Hero Section */}
+      <section className="relative min-h-[calc(100vh-100px)] flex items-center overflow-hidden">
+        {/* Background */}
         <div className="absolute inset-0">
-          {/* Primary Gradient Orb */}
-          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-600/30 rounded-full blur-[150px] animate-pulse-glow" />
-          {/* Secondary Gradient Orb */}
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pink-600/20 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
-          {/* Cyan Accent */}
-          <div className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '4s' }} />
-          {/* Grid overlay */}
+          <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[200px] animate-subtle-glow" />
+          <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[180px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-8 lg:py-0">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -73,26 +68,26 @@ const Home: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6"
               >
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-sm text-gray-400">Now accepting new projects</span>
+                <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                <span className="text-sm text-purple-300">Now accepting new projects</span>
               </motion.div>
 
-              {/* Main Headline */}
+              {/* Headline */}
               <h1 className="hero-title">
                 <span className="block text-white">We Build</span>
-                <span className="block gradient-text">Digital Products</span>
-                <span className="block text-gray-500">That Matter</span>
+                <span className="block text-purple-400">Digital Products</span>
+                <span className="block text-neutral-500">That Matter</span>
               </h1>
 
-              <p className="hero-subtitle mt-8 mx-auto lg:mx-0">
+              <p className="hero-subtitle mt-6 mx-auto lg:mx-0">
                 From AI-powered innovations to pixel-perfect interfaces, we craft
-                software solutions that transform businesses and delight users.
+                software solutions that transform businesses.
               </p>
 
-              {/* CTA Buttons */}
-              <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+              {/* CTA */}
+              <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
                 <Link to="/contact" className="btn-primary group">
                   Start a Project
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -103,12 +98,12 @@ const Home: React.FC = () => {
                 </button>
               </div>
 
-              {/* Trust Indicators */}
-              <div className="mt-12 pt-8 border-t border-white/5">
-                <p className="text-sm text-gray-500 mb-4">Trusted by innovative companies</p>
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
+              {/* Trust */}
+              <div className="mt-8 pt-6 border-t border-neutral-800 hidden lg:block">
+                <p className="text-xs text-neutral-500 mb-3">Trusted by innovative companies</p>
+                <div className="flex flex-wrap items-center gap-5">
                   {clients.slice(0, 4).map((client) => (
-                    <span key={client} className="text-sm font-display font-medium text-gray-600 hover:text-white transition-colors">
+                    <span key={client} className="text-sm font-display font-medium text-neutral-600 hover:text-white transition-colors">
                       {client}
                     </span>
                   ))}
@@ -116,117 +111,62 @@ const Home: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Right Side - 3D Floating Elements */}
+            {/* 3D Element */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="relative hidden lg:flex items-center justify-center"
+              className="relative flex items-center justify-center lg:-mt-8"
             >
-              <div className="relative w-full max-w-lg aspect-square perspective-container">
-                {/* Main 3D Cube/Diamond Shape */}
+              <div className="relative w-full max-w-md aspect-square perspective-container">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Outer Glow Ring */}
-                  <div className="absolute w-80 h-80 rounded-full border border-purple-500/20 animate-spin-slow" />
-                  <div className="absolute w-96 h-96 rounded-full border border-pink-500/10 animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '30s' }} />
+                  <div className="absolute w-64 h-64 rounded-full border border-purple-500/20 animate-[spin_20s_linear_infinite]" />
+                  <div className="absolute w-80 h-80 rounded-full border border-neutral-800 animate-[spin_30s_linear_infinite_reverse]" />
 
-                  {/* 3D Diamond/Crystal Shape */}
                   <motion.div
-                    animate={{
-                      rotateY: [0, 360],
-                      rotateX: [0, 15, 0, -15, 0],
-                    }}
-                    transition={{
-                      rotateY: { duration: 20, repeat: Infinity, ease: 'linear' },
-                      rotateX: { duration: 8, repeat: Infinity, ease: 'easeInOut' },
-                    }}
+                    animate={{ rotateY: [0, 360], rotateX: [0, 10, 0, -10, 0] }}
+                    transition={{ rotateY: { duration: 20, repeat: Infinity, ease: 'linear' }, rotateX: { duration: 8, repeat: Infinity, ease: 'easeInOut' } }}
                     className="relative transform-3d"
                     style={{ transformStyle: 'preserve-3d' }}
                   >
-                    {/* Front Face */}
-                    <div
-                      className="absolute w-48 h-48 bg-gradient-to-br from-purple-500/30 to-pink-500/30 backdrop-blur-sm border border-white/20 rounded-3xl shadow-glow"
-                      style={{ transform: 'translateZ(60px)' }}
-                    />
-                    {/* Back Face */}
-                    <div
-                      className="absolute w-48 h-48 bg-gradient-to-br from-cyan-500/30 to-purple-500/30 backdrop-blur-sm border border-white/20 rounded-3xl"
-                      style={{ transform: 'translateZ(-60px) rotateY(180deg)' }}
-                    />
-                    {/* Left Face */}
-                    <div
-                      className="absolute w-48 h-48 bg-gradient-to-br from-pink-500/20 to-purple-500/20 backdrop-blur-sm border border-white/10 rounded-3xl"
-                      style={{ transform: 'translateX(-60px) rotateY(-90deg)' }}
-                    />
-                    {/* Right Face */}
-                    <div
-                      className="absolute w-48 h-48 bg-gradient-to-br from-purple-500/20 to-cyan-500/20 backdrop-blur-sm border border-white/10 rounded-3xl"
-                      style={{ transform: 'translateX(60px) rotateY(90deg)' }}
-                    />
-                    {/* Top Face */}
-                    <div
-                      className="absolute w-48 h-48 bg-gradient-to-br from-white/10 to-purple-500/20 backdrop-blur-sm border border-white/20 rounded-3xl"
-                      style={{ transform: 'translateY(-60px) rotateX(90deg)' }}
-                    />
-                    {/* Bottom Face */}
-                    <div
-                      className="absolute w-48 h-48 bg-gradient-to-br from-purple-500/30 to-pink-500/30 backdrop-blur-sm border border-white/10 rounded-3xl"
-                      style={{ transform: 'translateY(60px) rotateX(-90deg)' }}
-                    />
+                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-purple-500/10 border border-purple-500/20 rounded-2xl backdrop-blur-sm" style={{ transform: 'translateZ(50px)' }} />
+                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-blue-500/10 border border-blue-500/20 rounded-2xl backdrop-blur-sm" style={{ transform: 'translateZ(-50px) rotateY(180deg)' }} />
+                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-neutral-900 border border-neutral-800 rounded-2xl" style={{ transform: 'translateX(-50px) rotateY(-90deg)' }} />
+                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-neutral-900 border border-neutral-800 rounded-2xl" style={{ transform: 'translateX(50px) rotateY(90deg)' }} />
+                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-neutral-800/50 border border-neutral-700 rounded-2xl" style={{ transform: 'translateY(-50px) rotateX(90deg)' }} />
+                    <div className="absolute w-36 h-36 lg:w-44 lg:h-44 bg-neutral-900 border border-neutral-800 rounded-2xl" style={{ transform: 'translateY(50px) rotateX(-90deg)' }} />
                   </motion.div>
-
-                  {/* Floating Particles */}
-                  {[...Array(6)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-3 h-3 rounded-full bg-gradient-to-r from-purple-400 to-pink-400"
-                      animate={{
-                        y: [0, -30, 0],
-                        x: [0, Math.sin(i) * 20, 0],
-                        opacity: [0.3, 0.8, 0.3],
-                      }}
-                      transition={{
-                        duration: 3 + i * 0.5,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                      }}
-                      style={{
-                        left: `${20 + i * 12}%`,
-                        top: `${30 + (i % 3) * 20}%`,
-                      }}
-                    />
-                  ))}
                 </div>
 
                 {/* Floating Cards */}
                 <motion.div
-                  animate={{ y: [0, -15, 0] }}
+                  animate={{ y: [0, -12, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -top-4 -right-4 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl"
+                  className="absolute -top-2 right-0 p-3 rounded-xl bg-neutral-900 border border-neutral-800"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                      <Bot size={20} className="text-white" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-purple-500 flex items-center justify-center">
+                      <Bot size={16} className="text-white" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-400">AI Integration</p>
-                      <p className="text-sm font-medium">GPT-4 Ready</p>
+                      <p className="text-[10px] text-neutral-500">AI Integration</p>
+                      <p className="text-xs font-medium text-white">GPT-4 Ready</p>
                     </div>
                   </div>
                 </motion.div>
 
                 <motion.div
-                  animate={{ y: [0, 15, 0] }}
+                  animate={{ y: [0, 12, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                  className="absolute -bottom-4 -left-4 p-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-xl"
+                  className="absolute -bottom-2 left-0 p-3 rounded-xl bg-neutral-900 border border-neutral-800"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                      <Code size={20} className="text-white" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center">
+                      <Code size={16} className="text-white" />
                     </div>
                     <div>
-                      <p className="text-xs text-gray-400">Full Stack</p>
-                      <p className="text-sm font-medium">React + Node</p>
+                      <p className="text-[10px] text-neutral-500">Full Stack</p>
+                      <p className="text-xs font-medium text-white">React + Node</p>
                     </div>
                   </div>
                 </motion.div>
@@ -240,20 +180,20 @@ const Home: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2"
         >
           <motion.div
-            animate={{ y: [0, 8, 0] }}
+            animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2"
+            className="w-5 h-8 rounded-full border-2 border-neutral-700 flex items-start justify-center p-1.5"
           >
-            <div className="w-1 h-2 rounded-full bg-white/50" />
+            <div className="w-1 h-1.5 rounded-full bg-purple-400" />
           </motion.div>
         </motion.div>
       </section>
 
       {/* Client Marquee */}
-      <section className="py-8 border-y border-white/5 bg-white/[0.01]">
+      <section className="py-6 border-y border-neutral-800/50">
         <div className="relative overflow-hidden">
           <motion.div
             className="flex gap-16"
@@ -261,7 +201,7 @@ const Home: React.FC = () => {
             transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
           >
             {[...clients, ...clients].map((client, index) => (
-              <span key={index} className="text-lg font-display font-medium text-gray-700 hover:text-white whitespace-nowrap transition-colors cursor-default">
+              <span key={index} className="text-lg font-display font-medium text-neutral-700 hover:text-white whitespace-nowrap transition-colors cursor-default">
                 {client}
               </span>
             ))}
@@ -269,8 +209,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-32">
+      {/* Stats */}
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
@@ -280,21 +220,19 @@ const Home: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-12 rounded-3xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/5"
+                className="text-center p-10 rounded-3xl bg-neutral-900/50 border border-neutral-800"
               >
-                <p className="font-display text-6xl md:text-7xl font-bold gradient-text">{stat.value}</p>
-                <p className="mt-4 text-sm text-gray-500 uppercase tracking-wider">{stat.label}</p>
+                <p className="font-display text-5xl md:text-6xl font-bold text-white">{stat.value}</p>
+                <p className="mt-3 text-sm text-neutral-500 uppercase tracking-wider">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-32 relative">
-        <div className="absolute inset-0 bg-hero-gradient" />
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      {/* Services */}
+      <section className="py-24 border-t border-neutral-800/50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -302,12 +240,10 @@ const Home: React.FC = () => {
             className="text-center mb-16"
           >
             <p className="section-label">What We Offer</p>
-            <h2 className="section-title">
-              Comprehensive <span className="text-gray-500">Solutions</span>
-            </h2>
+            <h2 className="section-title">Our Services</h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -315,38 +251,36 @@ const Home: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group card card-glow p-8"
+                className="group p-7 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 hover:bg-neutral-900 transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-purple-400 group-hover:text-white group-hover:from-purple-500 group-hover:to-pink-500 transition-all duration-500 mb-6">
+                <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white group-hover:border-purple-500 transition-all duration-300">
                   {service.icon}
                 </div>
-                <h3 className="font-display text-xl font-semibold text-white mb-3">{service.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
+                <h3 className="font-display text-lg font-semibold text-white mt-5 mb-2">{service.title}</h3>
+                <p className="text-neutral-500 text-sm leading-relaxed">{service.description}</p>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <Link to="/services" className="btn-ghost group">
+          <div className="mt-14 text-center">
+            <Link to="/services" className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition-colors group">
               View all services <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-32 bg-[#030303]">
+      {/* Process */}
+      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-16"
           >
             <p className="section-label">How We Work</p>
-            <h2 className="section-title">
-              Our <span className="text-gray-500">Process</span>
-            </h2>
+            <h2 className="section-title">Our Process</h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -358,9 +292,9 @@ const Home: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <span className="font-display text-8xl font-bold text-white/[0.03]">{step.number}</span>
+                <span className="font-display text-7xl font-bold text-purple-500/10">{step.number}</span>
                 <h3 className="font-display text-xl font-semibold text-white mt-2">{step.title}</h3>
-                <p className="mt-3 text-sm text-gray-500 leading-relaxed">{step.description}</p>
+                <p className="mt-3 text-sm text-neutral-500 leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
           </div>
@@ -368,7 +302,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-32">
+      <section className="py-24 border-t border-neutral-800/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -377,9 +311,7 @@ const Home: React.FC = () => {
             className="mb-16"
           >
             <p className="section-label">Testimonials</p>
-            <h2 className="section-title">
-              What Clients <span className="text-gray-500">Say</span>
-            </h2>
+            <h2 className="section-title">What Clients Say</h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -390,12 +322,12 @@ const Home: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card p-8"
+                className="p-8 rounded-2xl bg-neutral-900/50 border border-neutral-800"
               >
-                <p className="text-gray-400 leading-relaxed mb-6">"{item.quote}"</p>
+                <p className="text-neutral-400 leading-relaxed mb-6">"{item.quote}"</p>
                 <div>
                   <p className="font-display font-semibold text-white">{item.author}</p>
-                  <p className="text-sm text-gray-500">{item.role}</p>
+                  <p className="text-sm text-neutral-500">{item.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -403,8 +335,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-32 bg-[#030303]">
+      {/* FAQ */}
+      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800/50">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -413,9 +345,7 @@ const Home: React.FC = () => {
             className="text-center mb-16"
           >
             <p className="section-label">FAQ</p>
-            <h2 className="section-title">
-              Common <span className="text-gray-500">Questions</span>
-            </h2>
+            <h2 className="section-title">Common Questions</h2>
           </motion.div>
 
           <div className="space-y-3">
@@ -426,21 +356,21 @@ const Home: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="rounded-2xl border border-white/5 overflow-hidden"
+                className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-900/50"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors"
+                  className="w-full flex items-center justify-between p-6 text-left hover:bg-neutral-800/30 transition-colors"
                 >
                   <span className="font-display font-medium text-white">{faq.q}</span>
-                  <ChevronDown size={20} className={`text-gray-500 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
+                  <ChevronDown size={20} className={`text-neutral-500 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
                 </button>
                 <motion.div
                   initial={false}
                   animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="px-6 pb-6 text-gray-500 text-sm leading-relaxed">{faq.a}</p>
+                  <p className="px-6 pb-6 text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
                 </motion.div>
               </motion.div>
             ))}
@@ -448,11 +378,10 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-40 relative overflow-hidden">
+      {/* CTA */}
+      <section className="py-32 border-t border-neutral-800/50 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-purple-500/15 rounded-full blur-[180px]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/5 rounded-full blur-[200px]" />
         </div>
 
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
@@ -464,10 +393,10 @@ const Home: React.FC = () => {
             <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
               <span className="text-white">Ready to Build</span>
               <br />
-              <span className="gradient-text">Something Great?</span>
+              <span className="text-purple-400">Something Great?</span>
             </h2>
-            <p className="mt-8 text-xl text-gray-400 max-w-xl mx-auto">
-              Let's transform your ideas into reality with our AI-powered solutions.
+            <p className="mt-8 text-xl text-neutral-400 max-w-xl mx-auto">
+              Let's transform your ideas into reality.
             </p>
             <div className="mt-12">
               <Link to="/contact" className="btn-primary group text-base px-10 py-4">

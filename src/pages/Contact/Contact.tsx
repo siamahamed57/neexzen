@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, ArrowRight, Clock, ChevronDown, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ChevronDown, Send } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const contactInfo = [
@@ -21,38 +21,26 @@ const Contact: React.FC = () => {
 
   return (
     <main className="bg-black text-white">
-      {/* Hero Section - Slick & Modern */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
-        {/* Animated Background */}
+      {/* Hero */}
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-purple-600/25 rounded-full blur-[180px] animate-pulse-glow" />
-          <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[500px] bg-pink-500/20 rounded-full blur-[150px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]" />
+          <div className="absolute top-0 left-1/3 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[200px] animate-subtle-glow" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
-            >
-              <span className="text-sm text-gray-400">Contact Us</span>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-16">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+              <span className="text-sm text-purple-300">Contact Us</span>
             </motion.div>
 
             <h1 className="hero-title">
               <span className="text-white">Let's Build</span>
               <br />
-              <span className="gradient-text">Something Great</span>
+              <span className="text-purple-400">Something Great</span>
             </h1>
 
-            <p className="hero-subtitle mt-8 max-w-xl">
+            <p className="hero-subtitle mt-6 max-w-xl">
               Have a project in mind or just want to say hello?
               We'd love to hear from you.
             </p>
@@ -60,40 +48,34 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-24">
+      {/* Form & Info */}
+      <section className="py-20 border-t border-neutral-800/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-16">
             {/* Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-3"
-            >
-              <div className="card card-glow p-10">
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="lg:col-span-3">
+              <div className="p-10 rounded-2xl bg-neutral-900/50 border border-neutral-800">
                 <h2 className="font-display text-2xl font-bold text-white mb-8">Send us a message</h2>
 
                 <form className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm text-gray-400 mb-2">Your Name</label>
+                      <label htmlFor="name" className="block text-sm text-neutral-400 mb-2">Your Name</label>
                       <input type="text" id="name" className="input" placeholder="John Doe" />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm text-gray-400 mb-2">Email Address</label>
+                      <label htmlFor="email" className="block text-sm text-neutral-400 mb-2">Email Address</label>
                       <input type="email" id="email" className="input" placeholder="you@example.com" />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-sm text-gray-400 mb-2">Company (Optional)</label>
+                    <label htmlFor="company" className="block text-sm text-neutral-400 mb-2">Company (Optional)</label>
                     <input type="text" id="company" className="input" placeholder="Your Company" />
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm text-gray-400 mb-2">What can we help with?</label>
+                    <label htmlFor="service" className="block text-sm text-neutral-400 mb-2">What can we help with?</label>
                     <select id="service" className="input">
                       <option value="" className="bg-black">Select a service</option>
                       <option value="web" className="bg-black">Web Development</option>
@@ -106,7 +88,7 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm text-gray-400 mb-2">Project Details</label>
+                    <label htmlFor="message" className="block text-sm text-neutral-400 mb-2">Project Details</label>
                     <textarea id="message" rows={5} className="input resize-none" placeholder="Tell us about your project, timeline, and budget..." />
                   </div>
 
@@ -118,32 +100,21 @@ const Contact: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-2 space-y-6"
-            >
+            {/* Info */}
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="lg:col-span-2 space-y-6">
               {contactInfo.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="card flex items-start gap-4 p-6"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-purple-400">
+                <a key={item.label} href={item.href} className="flex items-start gap-4 p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">{item.label}</p>
+                    <p className="text-sm text-neutral-500">{item.label}</p>
                     <p className="font-display font-medium text-white">{item.value}</p>
                   </div>
                 </a>
               ))}
 
-              {/* Map */}
-              <div className="rounded-2xl overflow-hidden border border-white/5">
+              <div className="rounded-2xl overflow-hidden border border-neutral-800">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29205.9453439261!2d90.4022279486328!3d23.789744900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7a097d13911%3A0x2fe57059737f795a!2sBashundhara%20Residential%20Area%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1722204569123!5m2!1sen!2sbd"
                   width="100%"
@@ -158,42 +129,23 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-32 bg-[#030303]">
+      {/* FAQ */}
+      <section className="py-24 bg-neutral-900/30 border-t border-neutral-800/50">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <p className="section-label">FAQ</p>
-            <h2 className="section-title">Common <span className="text-gray-500">Questions</span></h2>
+            <h2 className="section-title">Common Questions</h2>
           </motion.div>
 
           <div className="space-y-3">
             {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="rounded-2xl border border-white/5 overflow-hidden"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors"
-                >
+              <motion.div key={index} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: index * 0.1 }} className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-900/50">
+                <button onClick={() => setOpenFaq(openFaq === index ? null : index)} className="w-full flex items-center justify-between p-6 text-left hover:bg-neutral-800/30 transition-colors">
                   <span className="font-display font-medium text-white">{faq.q}</span>
-                  <ChevronDown size={20} className={`text-gray-500 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
+                  <ChevronDown size={20} className={`text-neutral-500 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
                 </button>
-                <motion.div
-                  initial={false}
-                  animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
-                  className="overflow-hidden"
-                >
-                  <p className="px-6 pb-6 text-gray-500 text-sm leading-relaxed">{faq.a}</p>
+                <motion.div initial={false} animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }} className="overflow-hidden">
+                  <p className="px-6 pb-6 text-neutral-500 text-sm leading-relaxed">{faq.a}</p>
                 </motion.div>
               </motion.div>
             ))}
