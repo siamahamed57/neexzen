@@ -1,75 +1,18 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Search, ArrowRight, Rss, Mail, ChevronRight } from 'lucide-react';
+import { Search, ArrowRight, Clock, User } from 'lucide-react';
 
 const Blog: React.FC = () => {
   const posts = [
-    {
-      id: 1,
-      title: 'The Future of AI in Software Development',
-      category: 'AI Solutions',
-      tags: ['AI', 'Development', 'Trends'],
-      author: 'Siam',
-      date: 'July 29, 2024',
-      readingTime: '7 min read',
-      excerpt: 'Explore how artificial intelligence is revolutionizing the software development lifecycle, from automated coding to intelligent testing...',
-      imageUrl: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2070&auto=format&fit=crop',
-      featured: true,
-    },
-    {
-      id: 2,
-      title: 'Case Study: Scaling a SaaS Platform with AWS',
-      category: 'Case Studies',
-      tags: ['Cloud', 'SaaS', 'AWS'],
-      author: 'Jane Doe',
-      date: 'July 25, 2024',
-      readingTime: '9 min read',
-      excerpt: 'A deep dive into the architecture and strategies we used to scale a high-traffic SaaS application on Amazon Web Services...',
-      imageUrl: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop',
-      featured: false,
-    },
-    {
-      id: 3,
-      title: 'UI/UX Principles for High-Conversion Websites',
-      category: 'Design',
-      tags: ['UI/UX', 'Design', 'Conversion'],
-      author: 'John Smith',
-      date: 'July 22, 2024',
-      readingTime: '5 min read',
-      excerpt: 'Learn the core design principles that can dramatically improve user engagement and increase conversion rates on your website...',
-      imageUrl: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop',
-      featured: false,
-    },
-    {
-      id: 4,
-      title: 'Getting Started with Google Tag Manager for Analytics',
-      category: 'Tech News',
-      tags: ['Marketing', 'Analytics', 'GTM'],
-      author: 'Emily White',
-      date: 'July 18, 2024',
-      readingTime: '6 min read',
-      excerpt: 'A beginner-friendly guide to setting up Google Tag Manager and unlocking powerful insights about your user behavior...',
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
-      featured: false,
-    },
-    {
-      id: 5,
-      title: 'Building a Secure API with Node.js and JWT',
-      category: 'Software Development',
-      tags: ['Security', 'Node.js', 'API'],
-      author: 'Jane Doe',
-      date: 'July 15, 2024',
-      readingTime: '8 min read',
-      excerpt: 'Follow our step-by-step tutorial on creating a secure, token-based authentication system for your Node.js APIs using JSON Web Tokens.',
-      imageUrl: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop',
-      featured: true,
-    },
+    { id: 1, title: 'The Future of AI in Software Development', category: 'AI Solutions', author: 'Siam Ahmed', date: 'July 29, 2024', readTime: '7 min', excerpt: 'Explore how AI is revolutionizing the software development lifecycle.', image: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2070&auto=format&fit=crop', featured: true },
+    { id: 2, title: 'Scaling SaaS Platforms with AWS', category: 'Case Studies', author: 'Sarah Chen', date: 'July 25, 2024', readTime: '9 min', excerpt: 'Architecture and strategies for scaling high-traffic SaaS applications.', image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop', featured: true },
+    { id: 3, title: 'UI/UX Principles for Conversion', category: 'Design', author: 'Marcus Johnson', date: 'July 22, 2024', readTime: '5 min', excerpt: 'Core design principles that improve engagement and conversion rates.', image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop', featured: false },
+    { id: 4, title: 'Getting Started with Google Tag Manager', category: 'Marketing', author: 'Emily Park', date: 'July 18, 2024', readTime: '6 min', excerpt: 'A beginner-friendly guide to GTM and analytics insights.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop', featured: false },
+    { id: 5, title: 'Building Secure APIs with Node.js', category: 'Development', author: 'Sarah Chen', date: 'July 15, 2024', readTime: '8 min', excerpt: 'Creating secure token-based authentication for Node.js APIs.', image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop', featured: false },
   ];
 
-  const categories = ['All', 'Software Development', 'AI Solutions', 'Case Studies', 'Design', 'Tech News'];
-  const tags = ['AI', 'Cloud', 'SaaS', 'UI/UX', 'Security', 'Marketing', 'Development'];
-
+  const categories = ['All', 'AI Solutions', 'Development', 'Design', 'Case Studies', 'Marketing'];
   const [activeCategory, setActiveCategory] = React.useState('All');
   const [searchTerm, setSearchTerm] = React.useState('');
 
@@ -79,148 +22,178 @@ const Blog: React.FC = () => {
     return categoryMatch && searchMatch;
   });
 
-  const featuredPosts = posts.filter(p => p.featured);
-  const latestPosts = filteredPosts.filter(p => !p.featured);
+  const featuredPosts = filteredPosts.filter(p => p.featured);
+  const regularPosts = filteredPosts.filter(p => !p.featured);
 
   return (
-    <main className="relative bg-white dark:bg-black text-gray-900 dark:text-gray-100 transition-all duration-500 overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative px-6 lg:px-8 pt-32 pb-24 sm:pt-40 sm:pb-32 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/20 dark:bg-orange-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/20 dark:bg-teal-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+    <main className="bg-black text-white">
+      {/* Hero Section - Slick & Modern */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-cyan-500/25 rounded-full blur-[180px] animate-pulse-glow" />
+          <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[150px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
-        <div className="mx-auto max-w-4xl text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-orange-900 to-teal-900 dark:from-white dark:via-orange-100 dark:to-teal-100">
-              The Neexzen Blog
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
+            >
+              <span className="text-sm text-gray-400">Blog</span>
+            </motion.div>
+
+            <h1 className="hero-title">
+              <span className="text-white">Insights &</span>
+              <br />
+              <span className="gradient-text">Resources</span>
             </h1>
-            <p className="mt-6 text-xl leading-8 text-gray-600 dark:text-gray-400">
-              Insights on AI, software engineering, and digital innovation from our team of experts.
+
+            <p className="hero-subtitle mt-8 max-w-xl">
+              Insights on AI, software engineering, and digital innovation
+              from our team of experts.
             </p>
+
+            {/* Search */}
+            <div className="mt-10 max-w-md">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="input pl-12"
+                />
+                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Featured Posts Section */}
-      <section className="py-12 px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-3xl font-bold mb-8">Featured Articles</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {featuredPosts.map(post => (
-              <motion.div key={post.id} whileHover={{ y: -5 }} className="group relative rounded-2xl overflow-hidden shadow-lg">
-                <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover absolute inset-0" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
-                <div className="relative p-8 flex flex-col justify-end h-96">
-                  <span className="text-xs font-semibold text-white bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full self-start mb-2">{post.category}</span>
-                  <h3 className="text-3xl font-bold text-white mb-4">{post.title}</h3>
-                  <Link to={`/blog/${post.id}`} className="flex items-center gap-2 font-semibold text-white group-hover:text-orange-400 transition-colors">
-                    Read More <ArrowRight size={18} />
-                  </Link>
-                </div>
-              </motion.div>
+      {/* Category Filters */}
+      <section className="py-8 border-y border-white/5 bg-white/[0.01]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${activeCategory === category
+                    ? 'bg-white text-black'
+                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10'
+                  }`}
+              >
+                {category}
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Main Content Section */}
-      <section className="py-24 px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-12">
-          {/* Blog Posts */}
-          <div className="lg:col-span-8">
-            <h2 className="text-3xl font-bold mb-8">Latest Articles</h2>
-            <div className="space-y-12">
-              <AnimatePresence>
-                {latestPosts.map(post => (
-                  <motion.article
-                    key={post.id}
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="group grid grid-cols-1 md:grid-cols-3 gap-8 items-center"
-                  >
-                    <div className="md:col-span-1 rounded-2xl overflow-hidden aspect-video">
-                      <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+      {/* Featured Posts */}
+      {featuredPosts.length > 0 && (
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 className="font-display text-2xl font-bold mb-10">Featured</h2>
+            <div className="grid lg:grid-cols-2 gap-8">
+              {featuredPosts.map((post, index) => (
+                <motion.article
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group relative aspect-[16/10] rounded-3xl overflow-hidden"
+                >
+                  <img src={post.image} alt={post.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+                  <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                    <span className="text-xs text-purple-400 font-semibold uppercase tracking-wider mb-3">{post.category}</span>
+                    <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">{post.title}</h3>
+                    <p className="text-gray-400 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
+                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                      <span className="flex items-center gap-1"><User size={12} /> {post.author}</span>
+                      <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime}</span>
                     </div>
-                    <div className="md:col-span-2">
-                      <span className="text-sm font-semibold text-blue-500 dark:text-blue-400">{post.category}</span>
-                      <h3 className="text-2xl font-bold mt-2 mb-3 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        <Link to={`/blog/${post.id}`}>{post.title}</Link>
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{post.excerpt}</p>
-                      <div className="text-xs text-gray-500">
-                        <span>By {post.author}</span> &bull; <span>{post.date}</span> &bull; <span>{post.readingTime}</span>
-                      </div>
-                    </div>
-                  </motion.article>
-                ))}
-              </AnimatePresence>
-            </div>
-            {/* Pagination */}
-            <div className="flex justify-center mt-16 space-x-2">
-              <button className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300">Previous</button>
-              <button className="px-4 py-2 rounded-lg bg-blue-600 text-white">1</button>
-              <button className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300">2</button>
-              <button className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300">3</button>
-              <button className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300">Next</button>
+                  </div>
+                </motion.article>
+              ))}
             </div>
           </div>
+        </section>
+      )}
 
-          {/* Sidebar */}
-          <aside className="lg:col-span-4 mt-16 lg:mt-0">
-            <div className="sticky top-24 space-y-8">
-              {/* Search */}
-              <div className="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-                <h3 className="font-bold mb-4">Search</h3>
-                <div className="relative">
-                  <input type="text" placeholder="Find articles..." onChange={(e) => setSearchTerm(e.target.value)} className="w-full pl-4 pr-10 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-                  <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                </div>
-              </div>
+      {/* All Posts */}
+      <section className="py-20 bg-[#030303]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="font-display text-2xl font-bold mb-10">Latest Articles</h2>
 
-              {/* Categories */}
-              <div className="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-                <h3 className="font-bold mb-4">Categories</h3>
-                <ul className="space-y-2">
-                  {categories.map(cat => (
-                    <li key={cat}>
-                      <button onClick={() => setActiveCategory(cat)} className={`flex justify-between items-center w-full text-left ${activeCategory === cat ? 'text-blue-500 font-semibold' : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white'}`}>
-                        <span>{cat}</span>
-                        <ChevronRight size={16} />
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <AnimatePresence mode="popLayout">
+              {regularPosts.map((post, index) => (
+                <motion.article
+                  key={post.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="group"
+                >
+                  <div className="aspect-video rounded-2xl overflow-hidden mb-6">
+                    <img src={post.image} alt={post.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                  </div>
+                  <span className="text-xs text-purple-400 font-semibold uppercase tracking-wider">{post.category}</span>
+                  <h3 className="font-display text-xl font-bold text-white mt-2 group-hover:text-purple-400 transition-colors">{post.title}</h3>
+                  <p className="mt-3 text-sm text-gray-500 line-clamp-2">{post.excerpt}</p>
+                  <div className="mt-4 flex items-center gap-4 text-xs text-gray-600">
+                    <span>{post.date}</span>
+                    <span>·</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                </motion.article>
+              ))}
+            </AnimatePresence>
+          </div>
 
-              {/* Tags */}
-              <div className="p-6 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-                <h3 className="font-bold mb-4">Tags</h3>
-                <div className="flex flex-wrap gap-2">
-                  {tags.map(tag => (
-                    <button key={tag} className="px-3 py-1 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                      #{tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Newsletter */}
-              <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 text-white">
-                <Rss size={24} className="mb-3" />
-                <h3 className="font-bold text-xl mb-2">Stay Updated</h3>
-                <p className="text-sm opacity-80 mb-4">Subscribe to our newsletter for the latest in tech and AI.</p>
-                <form className="flex gap-2">
-                  <input type="email" placeholder="your@email.com" className="w-full px-3 py-2 text-sm text-gray-800 rounded-lg focus:ring-2 focus:ring-white focus:outline-none" />
-                  <button type="submit" className="p-2 bg-white/30 rounded-lg hover:bg-white/50 transition-colors">
-                    <Mail size={20} />
-                  </button>
-                </form>
-              </div>
+          {filteredPosts.length === 0 && (
+            <div className="text-center py-20">
+              <p className="text-gray-500">No articles found matching your criteria.</p>
             </div>
-          </aside>
+          )}
+        </div>
+      </section>
+
+      {/* Newsletter CTA */}
+      <section className="py-32">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-display text-4xl md:text-5xl font-bold">
+              Stay <span className="gradient-text">Updated</span>
+            </h2>
+            <p className="mt-4 text-gray-400 max-w-md mx-auto">
+              Subscribe to our newsletter for the latest insights on AI, technology, and innovation.
+            </p>
+            <form className="mt-10 flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input type="email" placeholder="Enter your email" className="input flex-1" />
+              <button type="submit" className="btn-primary">
+                Subscribe
+              </button>
+            </form>
+          </motion.div>
         </div>
       </section>
     </main>
