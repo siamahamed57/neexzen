@@ -1,17 +1,14 @@
 import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Layers, Shield, ChevronDown, Bot, Megaphone, PenTool, Play } from 'lucide-react';
+import { ArrowRight, Code, Smartphone, ChevronDown, Bot, Play } from 'lucide-react';
 import Hero3D from '../../components/Hero3D/Hero3D';
 
 const Home: React.FC = () => {
   const services = [
-    { icon: <Code size={22} />, title: 'Web Development', description: 'Modern, scalable web applications built with cutting-edge technology.' },
-    { icon: <PenTool size={22} />, title: 'UI/UX Design', description: 'Crafting intuitive interfaces and engaging user experiences.' },
-    { icon: <Megaphone size={22} />, title: 'Digital Marketing', description: 'Strategic SEO, Meta Pixel & GTM integrations for maximum ROI.' },
-    { icon: <Bot size={22} />, title: 'AI & Machine Learning', description: 'Intelligent systems to automate and optimize operations.' },
-    { icon: <Layers size={22} />, title: 'Software & SaaS', description: 'Building bespoke applications and scalable SaaS platforms.' },
-    { icon: <Shield size={22} />, title: 'Cybersecurity', description: 'Robust security solutions and blazing-fast performance.' },
+    { icon: <Code size={22} />, title: 'Web Development', description: 'High-conversion landing pages, e-commerce, and enterprise systems with stunning animations.' },
+    { icon: <Smartphone size={22} />, title: 'Mobile Application', description: 'Cross-platform Flutter & React Native apps with on-demand ecosystems and IoT dashboards.' },
+    { icon: <Bot size={22} />, title: 'AI Integration', description: 'Enterprise RAG systems, AI customer support, and autonomous agents with custom LLM fine-tuning.' },
   ];
 
   const stats = [

@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+CONTENT_REQUIREMENTS.md
+doc.py
+Neexzen_Content_Requirements.docx

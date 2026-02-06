@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 interface CursorGlowProps {
-    containerRef: React.RefObject<HTMLElement>;
+    containerRef: React.RefObject<HTMLElement | null>;
 }
 
 const CursorGlow: React.FC<CursorGlowProps> = ({ containerRef }) => {

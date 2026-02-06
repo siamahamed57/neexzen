@@ -1,25 +1,57 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Layers, Palette, Megaphone, Shield, Zap, MonitorSmartphone, Bot, Cloud, Check } from 'lucide-react';
+import { ArrowRight, Code, Smartphone, Brain, Globe, ShoppingCart, Server, Palette, Zap, Layers, MapPin, Rocket, MessageSquare, Users, Cpu, Settings } from 'lucide-react';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
 
 const Services: React.FC = () => {
-  const heroRef = useRef<HTMLElement>(null);
+  const heroRef = useRef<HTMLElement | null>(null);
 
-  const services = [
-    { icon: <Code size={22} />, title: 'Web Development', category: 'Development', description: 'Modern, responsive, and high-performing websites built with the latest technologies.', features: ['React & Next.js', 'Custom CMS', 'E-commerce', 'Progressive Web Apps'] },
-    { icon: <Palette size={22} />, title: 'UI/UX Design', category: 'Design', description: 'Intuitive interfaces and engaging experiences that convert visitors into customers.', features: ['User Research', 'Prototyping', 'Design Systems', 'Usability Testing'] },
-    { icon: <Bot size={22} />, title: 'AI & Machine Learning', category: 'AI', description: 'Intelligent systems that automate processes and unlock new opportunities.', features: ['Predictive Analytics', 'NLP Solutions', 'Computer Vision', 'Custom ML Models'] },
-    { icon: <Layers size={22} />, title: 'Software & SaaS', category: 'Development', description: 'Bespoke applications and scalable cloud-based platforms for your business.', features: ['Custom Software', 'SaaS Development', 'API Integration', 'Microservices'] },
-    { icon: <Megaphone size={22} />, title: 'Digital Marketing', category: 'Growth', description: 'Strategic campaigns and analytics that drive measurable business results.', features: ['SEO Optimization', 'PPC Campaigns', 'Social Media', 'Content Strategy'] },
-    { icon: <Shield size={22} />, title: 'Security Solutions', category: 'Security', description: 'Robust protection strategies to keep your digital assets secure.', features: ['Security Audits', 'Penetration Testing', 'Compliance', 'Monitoring'] },
-    { icon: <Zap size={22} />, title: 'Performance', category: 'Technical', description: 'Optimization strategies for blazing-fast load times and smooth experiences.', features: ['Core Web Vitals', 'Speed Optimization', 'CDN Setup', 'Caching Strategy'] },
-    { icon: <Cloud size={22} />, title: 'Cloud Solutions', category: 'Infrastructure', description: 'Scalable and reliable cloud infrastructure for modern applications.', features: ['AWS & GCP', 'DevOps', 'CI/CD Pipelines', 'Kubernetes'] },
-    { icon: <MonitorSmartphone size={22} />, title: 'Mobile Apps', category: 'Development', description: 'Native and cross-platform applications that users love.', features: ['iOS & Android', 'React Native', 'Flutter', 'App Store Launch'] },
+  const serviceCategories = [
+    {
+      id: 'web',
+      icon: <Code size={28} />,
+      title: 'Web Development',
+      color: 'purple',
+      description: 'Cutting-edge web solutions that drive results',
+      services: [
+        { title: 'High-Conversion Landing Pages', description: 'Immersive 3D & GSAP animations that turn visitors into customers.', icon: <Globe size={18} /> },
+        { title: 'E-commerce & Scalable Stores', description: 'Custom Shopify & WooCommerce stores with advanced plugin development.', icon: <ShoppingCart size={18} /> },
+        { title: 'Enterprise Systems (LMS/ERP/POS)', description: 'Custom internal tools to automate your workflow.', icon: <Server size={18} /> },
+        { title: 'Pixel-Perfect UI/UX', description: 'Figma/Adobe XD to high-performance, responsive code.', icon: <Palette size={18} /> },
+        { title: 'Performance & SEO', description: 'Technical audits and speed optimization for higher rankings.', icon: <Zap size={18} /> },
+      ],
+    },
+    {
+      id: 'mobile',
+      icon: <Smartphone size={28} />,
+      title: 'Mobile Application',
+      color: 'blue',
+      description: 'Native-feel apps for iOS & Android',
+      services: [
+        { title: 'Cross-Platform Apps', description: 'High-performance Flutter & React Native apps for iOS & Android.', icon: <Layers size={18} /> },
+        { title: 'Web-to-Mobile Transformation', description: 'Convert your web platform into a native-feel mobile app.', icon: <Smartphone size={18} /> },
+        { title: 'On-Demand Ecosystems', description: 'Uber-style solutions with real-time GPS, payments & multi-user interfaces.', icon: <MapPin size={18} /> },
+        { title: 'IoT Dashboards', description: 'Real-time monitoring & control for smart devices with low-latency data sync.', icon: <Cpu size={18} /> },
+        { title: 'ASO & Launch Strategy', description: 'Metadata optimization for maximum app store visibility.', icon: <Rocket size={18} /> },
+      ],
+    },
+    {
+      id: 'ai',
+      icon: <Brain size={28} />,
+      title: 'AI Integration',
+      color: 'emerald',
+      description: 'Intelligent automation & smart solutions',
+      services: [
+        { title: 'Enterprise Knowledge Retrieval (RAG)', description: '"Chat with your Data" systems for secure document querying.', icon: <MessageSquare size={18} /> },
+        { title: 'AI Customer Support', description: 'Intelligent assistants with multi-lingual support & human-in-the-loop escalation.', icon: <Users size={18} /> },
+        { title: 'Autonomous AI Agents', description: 'Multi-step automation for lead nurturing, data entry & business processes.', icon: <Settings size={18} /> },
+        { title: 'Custom LLM Fine-Tuning', description: 'Optimized open-source models (Llama 3, Mistral) for industry-specific accuracy.', icon: <Cpu size={18} /> },
+      ],
+    },
   ];
 
-  const technologies = ['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'TensorFlow', 'AWS', 'Google Cloud', 'Docker', 'Kubernetes', 'PostgreSQL', 'MongoDB'];
+  const technologies = ['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'Flutter', 'React Native', 'TensorFlow', 'OpenAI', 'AWS', 'Google Cloud', 'Docker'];
 
   const processSteps = [
     { number: '01', title: 'Discovery', description: 'Deep dive into your vision, goals, and challenges.' },
@@ -30,34 +62,69 @@ const Services: React.FC = () => {
     { number: '06', title: 'Launch', description: 'Seamless deployment with ongoing support.' },
   ];
 
-  const [activeCategory, setActiveCategory] = React.useState('All');
-  const categories = ['All', 'Development', 'Design', 'AI', 'Growth', 'Security', 'Technical', 'Infrastructure'];
-  const filteredServices = activeCategory === 'All' ? services : services.filter(s => s.category === activeCategory);
+  const getColorClasses = (color: string) => {
+    const colors: Record<string, { bg: string; border: string; text: string; hoverBg: string; gradientFrom: string }> = {
+      purple: { bg: 'bg-purple-500/10', border: 'border-purple-500/20', text: 'text-purple-400', hoverBg: 'group-hover:bg-purple-500', gradientFrom: 'from-purple-500/20' },
+      blue: { bg: 'bg-blue-500/10', border: 'border-blue-500/20', text: 'text-blue-400', hoverBg: 'group-hover:bg-blue-500', gradientFrom: 'from-blue-500/20' },
+      emerald: { bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', text: 'text-emerald-400', hoverBg: 'group-hover:bg-emerald-500', gradientFrom: 'from-emerald-500/20' },
+    };
+    return colors[color] || colors.purple;
+  };
 
   return (
-    <main className="bg-black text-white">
+    <main className="bg-black text-white relative">
+      {/* Global Animated Background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        {/* Animated gradient mesh */}
+        <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] animate-slow-spin">
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px]" />
+          <div className="absolute top-3/4 left-1/2 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[100px]" />
+          <div className="absolute top-1/2 left-3/4 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[100px]" />
+        </div>
+        {/* Subtle noise overlay */}
+        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==')]" />
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      </div>
+
       {/* Hero */}
       <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden">
         <CursorGlow containerRef={heroRef} />
+
+        {/* Hero-specific accent glows */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[150px] animate-subtle-glow" />
-          <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[150px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
+          <motion.div
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-purple-500/30 rounded-full blur-[150px]"
+          />
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[120px]"
+          />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-16">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
               <span className="text-sm text-purple-300">What We Do</span>
             </motion.div>
 
             <h1 className="hero-title">
               <span className="text-white">Comprehensive</span>
               <br />
-              <span className="text-purple-400">Digital Solutions</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-400 to-purple-400">Digital Solutions</span>
             </h1>
 
-            <p className="hero-subtitle mt-6 max-w-xl">
+            <p className="hero-subtitle mt-6 max-w-xl text-neutral-300">
               From AI-driven innovations to pixel-perfect development, we provide
               a complete suite of services to elevate your business.
             </p>
@@ -65,55 +132,56 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-24 border-t border-neutral-800">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Filters */}
-          <div className="flex flex-wrap gap-3 mb-16">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${activeCategory === category
-                    ? 'bg-white text-black'
-                    : 'bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-700 hover:border-neutral-600'
-                  }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredServices.map((service, index) => (
+      {/* Service Categories */}
+      {serviceCategories.map((category, catIndex) => {
+        const colorClasses = getColorClasses(category.color);
+        return (
+          <section key={category.id} className={`relative py-24 ${catIndex > 0 ? 'border-t border-neutral-800/50' : ''}`}>
+            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+              {/* Category Header */}
               <motion.div
-                key={service.title}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="group p-7 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 hover:bg-neutral-900 transition-all duration-300"
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-5 mb-12"
               >
-                <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white group-hover:border-purple-500 transition-all duration-300">
-                  {service.icon}
+                <div className={`w-16 h-16 rounded-2xl ${colorClasses.bg} border ${colorClasses.border} flex items-center justify-center ${colorClasses.text}`}>
+                  {category.icon}
                 </div>
-                <span className="inline-block mt-5 text-xs text-purple-400 font-medium uppercase tracking-wider">{service.category}</span>
-                <h3 className="font-display text-lg font-semibold text-white mt-1 mb-2">{service.title}</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed mb-5">{service.description}</p>
-
-                <ul className="space-y-2">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2.5 text-sm text-neutral-400">
-                      <Check size={14} className="text-purple-400" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <h2 className="font-display text-3xl md:text-4xl font-bold text-white">{category.title}</h2>
+                  <p className="text-neutral-400 mt-1">{category.description}</p>
+                </div>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+              {/* Services Grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {category.services.map((service, index) => (
+                  <motion.div
+                    key={service.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                    className="group relative p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-700 transition-all duration-300 overflow-hidden"
+                  >
+                    {/* Gradient overlay on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses.gradientFrom} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+
+                    <div className="relative z-10">
+                      <div className={`w-10 h-10 rounded-xl ${colorClasses.bg} border ${colorClasses.border} flex items-center justify-center ${colorClasses.text} ${colorClasses.hoverBg} group-hover:text-white group-hover:border-transparent transition-all duration-300`}>
+                        {service.icon}
+                      </div>
+                      <h3 className="font-display text-base font-semibold text-white mt-4 mb-2 group-hover:text-white transition-colors">{service.title}</h3>
+                      <p className="text-neutral-400 text-sm leading-relaxed group-hover:text-neutral-300 transition-colors">{service.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
 
       {/* Technologies */}
       <section className="py-24 border-t border-neutral-800">

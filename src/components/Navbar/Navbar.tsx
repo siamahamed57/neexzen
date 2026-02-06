@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ArrowRight, Code, Layers, Palette, Bot } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, Code, Smartphone, Brain } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
@@ -39,10 +39,9 @@ const Navbar: React.FC = () => {
       name: 'Services',
       path: '/services',
       dropdown: [
-        { name: 'Web Development', description: 'Modern web applications', icon: <Code size={18} /> },
-        { name: 'AI & Machine Learning', description: 'Intelligent solutions', icon: <Bot size={18} /> },
-        { name: 'UI/UX Design', description: 'Beautiful interfaces', icon: <Palette size={18} /> },
-        { name: 'Software & SaaS', description: 'Enterprise platforms', icon: <Layers size={18} /> },
+        { name: 'Web Development', description: 'Websites, e-commerce & apps', icon: <Code size={18} />, color: 'purple' },
+        { name: 'Mobile Application', description: 'iOS & Android apps', icon: <Smartphone size={18} />, color: 'blue' },
+        { name: 'AI Integration', description: 'RAG, agents & LLMs', icon: <Brain size={18} />, color: 'emerald' },
       ],
     },
     { name: 'Projects', path: '/projects' },
@@ -53,7 +52,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* Announcement Bar */}
+      {/* Announcement Bar - Hidden for now
       <div className="fixed top-0 left-0 right-0 z-50 bg-purple-600">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-3 text-sm">
           <span className="text-white/90">Free AI consultation for startups</span>
@@ -62,9 +61,10 @@ const Navbar: React.FC = () => {
           </Link>
         </div>
       </div>
+      */}
 
       {/* Main Navbar */}
-      <header className={`fixed top-[36px] left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-black/95 backdrop-blur-xl border-b border-neutral-800' : 'bg-transparent'
+      <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-black/95 backdrop-blur-xl border-b border-neutral-800' : 'bg-transparent'
         }`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
@@ -113,7 +113,10 @@ const Navbar: React.FC = () => {
                             to="/services"
                             className="flex items-center gap-3 px-4 py-3 hover:bg-neutral-800 transition-colors"
                           >
-                            <div className="w-9 h-9 rounded-lg bg-neutral-800 flex items-center justify-center text-purple-400">
+                            <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${dropItem.color === 'purple' ? 'bg-purple-500/10 text-purple-400' :
+                              dropItem.color === 'blue' ? 'bg-blue-500/10 text-blue-400' :
+                                'bg-emerald-500/10 text-emerald-400'
+                              }`}>
                               {dropItem.icon}
                             </div>
                             <div>
@@ -207,7 +210,7 @@ const Navbar: React.FC = () => {
       </AnimatePresence>
 
       {/* Spacer */}
-      <div className="h-[100px] lg:h-[116px]" />
+      <div className="h-16 lg:h-20" />
     </>
   );
 };

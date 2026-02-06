@@ -31,8 +31,10 @@ export default {
         'float': 'float 8s ease-in-out infinite',
         'float-slow': 'float 12s ease-in-out infinite',
         'spin-slow': 'spin 20s linear infinite',
+        'slow-spin': 'slowSpin 60s linear infinite',
         'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
         'gradient-shift': 'gradientShift 8s ease infinite',
+        'subtle-glow': 'subtleGlow 6s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -46,6 +48,14 @@ export default {
         gradientShift: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
+        },
+        slowSpin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        subtleGlow: {
+          '0%, 100%': { opacity: '0.5', transform: 'scale(1)' },
+          '50%': { opacity: '0.8', transform: 'scale(1.1)' },
         },
       },
       boxShadow: {
