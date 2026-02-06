@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Smartphone, ChevronDown, Bot, Play } from 'lucide-react';
+import { ArrowRight, Code, Smartphone, Bot, Play } from 'lucide-react';
 import Hero3D from '../../components/Hero3D/Hero3D';
 
 const Home: React.FC = () => {
@@ -335,7 +335,7 @@ const Home: React.FC = () => {
             <h2 className="section-title">Common Questions</h2>
           </motion.div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
@@ -343,21 +343,45 @@ const Home: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-900/50"
+                className="group"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left hover:bg-neutral-800/30 transition-colors"
+                  className={`w-full flex items-center gap-4 p-5 text-left rounded-2xl transition-all duration-300 ${openFaq === index
+                    ? 'bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20'
+                    : 'bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 hover:bg-neutral-900'
+                    }`}
                 >
-                  <span className="font-display font-medium text-white">{faq.q}</span>
-                  <ChevronDown size={20} className={`text-neutral-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
+                  {/* Number indicator */}
+                  <span className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${openFaq === index
+                    ? 'bg-purple-500 text-white'
+                    : 'bg-neutral-800 text-neutral-400 group-hover:bg-neutral-700'
+                    }`}>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <span className="flex-1 font-display font-medium text-white">{faq.q}</span>
+
+                  {/* Animated plus/minus icon */}
+                  <div className={`relative w-6 h-6 flex-shrink-0 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`}>
+                    <span className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-0.5 rounded-full transition-all duration-300 ${openFaq === index ? 'bg-purple-400' : 'bg-neutral-400'}`} />
+                    <span className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-3 rounded-full transition-all duration-300 ${openFaq === index ? 'bg-purple-400 rotate-90 opacity-0' : 'bg-neutral-400'}`} />
+                  </div>
                 </button>
+
+                {/* Answer panel */}
                 <motion.div
                   initial={false}
-                  animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
+                  animate={{
+                    height: openFaq === index ? 'auto' : 0,
+                    opacity: openFaq === index ? 1 : 0
+                  }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
                   className="overflow-hidden"
                 >
-                  <p className="px-6 pb-6 text-neutral-400 text-sm leading-relaxed">{faq.a}</p>
+                  <div className="px-5 py-4 ml-14">
+                    <p className="text-neutral-300 text-sm leading-relaxed">{faq.a}</p>
+                  </div>
                 </motion.div>
               </motion.div>
             ))}

@@ -67,10 +67,10 @@ const Navbar: React.FC = () => {
       <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? 'bg-black/95 backdrop-blur-xl border-b border-neutral-800' : 'bg-transparent'
         }`}>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-14 lg:h-16' : 'h-16 lg:h-20'}`}>
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
-              <span className="text-2xl font-display font-bold tracking-tight text-white">
+              <span className={`font-display font-bold tracking-tight text-white transition-all duration-300 ${isScrolled ? 'text-xl' : 'text-2xl'}`}>
                 neexzen
               </span>
             </Link>
