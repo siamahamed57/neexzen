@@ -24,7 +24,7 @@ const Home: React.FC = () => {
     { number: '04', title: 'Launch', description: 'Seamless deployment with ongoing optimization.' },
   ];
 
-  const clients = ['Unies', 'Uixpertise', 'Lyvaa', 'Neexzen', 'Tusqa Well Being', 'AcholComputers', 'Dr Shaiful Islam', 'N3X Venture'];
+  const clients = ['Uniess', 'Uixpertise', 'Lyvaa', 'Neexzen', 'Tusqa Well Being', 'AcholComputers', 'Dr Shaiful Islam', 'N3X Venture'];
 
   const testimonials = [
     { quote: 'Neexzen transformed our business with their AI-powered solutions. Results exceeded expectations.', author: 'Sarah Chen', role: 'CTO, TechVentures' },
