@@ -8,6 +8,7 @@ import Blog from '../pages/Blog/Blog';
 import Contact from '../pages/Contact/Contact';
 import Privacy from '../pages/Privacy/Privacy';
 import Terms from '../pages/Terms/Terms';
+import BlogDetails from '../pages/Blog/BlogDetails';
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
@@ -16,6 +17,7 @@ const AppRoutes: React.FC = () => {
       <Route path="/projects" element={<Projects />} />
       <Route path="/about" element={<About />} />
       <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:id" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/privacy-policy" element={<Privacy />} />
       <Route path="/terms-of-service" element={<Terms />} />

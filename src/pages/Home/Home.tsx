@@ -345,44 +345,56 @@ const Home: React.FC = () => {
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 className="group"
               >
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className={`w-full flex items-center gap-4 p-5 text-left rounded-2xl transition-all duration-300 ${openFaq === index
-                    ? 'bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20'
-                    : 'bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 hover:bg-neutral-900'
+                <div
+                  className={`relative rounded-2xl transition-all duration-500 overflow-hidden ${openFaq === index
+                      ? 'bg-neutral-900 border-transparent shadow-[0_0_30px_rgba(168,85,247,0.15)]'
+                      : 'bg-neutral-900/40 border border-neutral-800 hover:border-neutral-700'
                     }`}
                 >
-                  {/* Number indicator */}
-                  <span className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${openFaq === index
-                    ? 'bg-purple-500 text-white'
-                    : 'bg-neutral-800 text-neutral-400 group-hover:bg-neutral-700'
-                    }`}>
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
+                  {/* Animated Gradient Border for Active State */}
+                  {openFaq === index && (
+                    <div className="absolute inset-0 p-[1px] rounded-2xl bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500 bg-[length:200%_auto] animate-gradient-mask -z-10 opacity-100" />
+                  )}
 
-                  <span className="flex-1 font-display font-medium text-white">{faq.q}</span>
+                  {/* Button */}
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full flex items-center gap-6 p-6 text-left relative z-10"
+                  >
+                    <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 ${openFaq === index
+                        ? 'bg-gradient-to-br from-purple-500 to-blue-500 text-white shadow-lg shadow-purple-500/30'
+                        : 'bg-neutral-800 text-neutral-400 group-hover:bg-neutral-700'
+                      }`}>
+                      <span className="font-display font-bold">{String(index + 1).padStart(2, '0')}</span>
+                    </div>
 
-                  {/* Animated plus/minus icon */}
-                  <div className={`relative w-6 h-6 flex-shrink-0 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`}>
-                    <span className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-0.5 rounded-full transition-all duration-300 ${openFaq === index ? 'bg-purple-400' : 'bg-neutral-400'}`} />
-                    <span className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-3 rounded-full transition-all duration-300 ${openFaq === index ? 'bg-purple-400 rotate-90 opacity-0' : 'bg-neutral-400'}`} />
-                  </div>
-                </button>
+                    <span className={`flex-1 font-display text-lg font-medium transition-colors duration-300 ${openFaq === index ? 'text-white' : 'text-neutral-300 group-hover:text-white'
+                      }`}>
+                      {faq.q}
+                    </span>
 
-                {/* Answer panel */}
-                <motion.div
-                  initial={false}
-                  animate={{
-                    height: openFaq === index ? 'auto' : 0,
-                    opacity: openFaq === index ? 1 : 0
-                  }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-5 py-4 ml-14">
-                    <p className="text-neutral-300 text-sm leading-relaxed">{faq.a}</p>
-                  </div>
-                </motion.div>
+                    <div className={`relative w-8 h-8 flex items-center justify-center rounded-full transition-all duration-500 ${openFaq === index ? 'bg-white/10 rotate-180' : 'bg-transparent'
+                      }`}>
+                      <span className={`absolute w-4 h-0.5 rounded-full transition-colors duration-300 ${openFaq === index ? 'bg-purple-400' : 'bg-neutral-500 group-hover:bg-white'
+                        }`} />
+                      <span className={`absolute w-0.5 h-4 rounded-full transition-all duration-300 ${openFaq === index ? 'bg-purple-400 rotate-90 opacity-0' : 'bg-neutral-500 group-hover:bg-white'
+                        }`} />
+                    </div>
+                  </button>
+
+                  {/* Content */}
+                  <motion.div
+                    initial={false}
+                    animate={{ height: openFaq === index ? 'auto' : 0, opacity: openFaq === index ? 1 : 0 }}
+                    transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                  >
+                    <div className="px-6 pb-6 pl-[88px] relative z-10">
+                      <p className="text-neutral-400 leading-relaxed">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
               </motion.div>
             ))}
           </div>

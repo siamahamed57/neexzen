@@ -1,18 +1,12 @@
 import React, { useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Clock, User } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
+import { posts } from '../../data/blogData';
 
 const Blog: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
-
-  const posts = [
-    { id: 1, title: 'The Future of AI in Software Development', category: 'AI Solutions', author: 'Siam Ahmed', date: 'July 29, 2024', readTime: '7 min', excerpt: 'Explore how AI is revolutionizing the software development lifecycle.', image: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2070&auto=format&fit=crop', featured: true },
-    { id: 2, title: 'Scaling SaaS Platforms with AWS', category: 'Case Studies', author: 'Sarah Chen', date: 'July 25, 2024', readTime: '9 min', excerpt: 'Architecture and strategies for scaling high-traffic SaaS applications.', image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop', featured: true },
-    { id: 3, title: 'UI/UX Principles for Conversion', category: 'Design', author: 'Marcus Johnson', date: 'July 22, 2024', readTime: '5 min', excerpt: 'Core design principles that improve engagement and conversion rates.', image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop', featured: false },
-    { id: 4, title: 'Getting Started with Google Tag Manager', category: 'Marketing', author: 'Emily Park', date: 'July 18, 2024', readTime: '6 min', excerpt: 'A beginner-friendly guide to GTM and analytics insights.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop', featured: false },
-    { id: 5, title: 'Building Secure APIs with Node.js', category: 'Development', author: 'Sarah Chen', date: 'July 15, 2024', readTime: '8 min', excerpt: 'Creating secure token-based authentication for Node.js APIs.', image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop', featured: false },
-  ];
 
   const categories = ['All', 'AI Solutions', 'Development', 'Design', 'Case Studies', 'Marketing'];
   const [activeCategory, setActiveCategory] = React.useState('All');
@@ -74,8 +68,8 @@ const Blog: React.FC = () => {
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${activeCategory === category
-                    ? 'bg-white text-black'
-                    : 'bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-700 hover:border-neutral-600'
+                  ? 'bg-white text-black'
+                  : 'bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-700 hover:border-neutral-600'
                   }`}
               >
                 {category}
@@ -92,19 +86,21 @@ const Blog: React.FC = () => {
             <h2 className="font-display text-2xl font-bold text-white mb-10">Featured</h2>
             <div className="grid lg:grid-cols-2 gap-8">
               {featuredPosts.map((post, index) => (
-                <motion.article key={post.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="group relative aspect-[16/10] rounded-3xl overflow-hidden border border-neutral-800 cursor-pointer">
-                  <img src={post.image} alt={post.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
-                  <div className="absolute inset-0 p-10 flex flex-col justify-end">
-                    <span className="text-xs text-purple-400 font-medium uppercase tracking-wider mb-3">{post.category}</span>
-                    <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">{post.title}</h3>
-                    <p className="text-neutral-300 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-                    <div className="flex items-center gap-4 text-xs text-neutral-400">
-                      <span className="flex items-center gap-1"><User size={12} /> {post.author}</span>
-                      <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime}</span>
+                <Link to={`/blog/${post.id}`} key={post.id}>
+                  <motion.article initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="group relative aspect-[16/10] rounded-3xl overflow-hidden border border-neutral-800 cursor-pointer h-full">
+                    <img src={post.image} alt={post.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+                    <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                      <span className="text-xs text-purple-400 font-medium uppercase tracking-wider mb-3">{post.category}</span>
+                      <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">{post.title}</h3>
+                      <p className="text-neutral-300 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
+                      <div className="flex items-center gap-4 text-xs text-neutral-400">
+                        <span className="flex items-center gap-1"><User size={12} /> {post.author}</span>
+                        <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime}</span>
+                      </div>
                     </div>
-                  </div>
-                </motion.article>
+                  </motion.article>
+                </Link>
               ))}
             </div>
           </div>
@@ -119,19 +115,28 @@ const Blog: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence mode="popLayout">
               {regularPosts.map((post, index) => (
-                <motion.article key={post.id} layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.4, delay: index * 0.05 }} className="group cursor-pointer">
-                  <div className="aspect-video rounded-2xl overflow-hidden mb-6 border border-neutral-800">
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
-                  </div>
-                  <span className="text-xs text-purple-400 font-medium uppercase tracking-wider">{post.category}</span>
-                  <h3 className="font-display text-xl font-bold text-white mt-2 group-hover:text-purple-400 transition-colors">{post.title}</h3>
-                  <p className="mt-3 text-sm text-neutral-400 line-clamp-2">{post.excerpt}</p>
-                  <div className="mt-4 flex items-center gap-4 text-xs text-neutral-500">
-                    <span>{post.date}</span>
-                    <span>·</span>
-                    <span>{post.readTime}</span>
-                  </div>
-                </motion.article>
+                <Link to={`/blog/${post.id}`} key={post.id}>
+                  <motion.article
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    className="group cursor-pointer h-full flex flex-col"
+                  >
+                    <div className="aspect-video rounded-2xl overflow-hidden mb-6 border border-neutral-800">
+                      <img src={post.image} alt={post.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" />
+                    </div>
+                    <span className="text-xs text-purple-400 font-medium uppercase tracking-wider">{post.category}</span>
+                    <h3 className="font-display text-xl font-bold text-white mt-2 group-hover:text-purple-400 transition-colors">{post.title}</h3>
+                    <p className="mt-3 text-sm text-neutral-400 line-clamp-2 flex-grow">{post.excerpt}</p>
+                    <div className="mt-4 flex items-center gap-4 text-xs text-neutral-500">
+                      <span>{post.date}</span>
+                      <span>·</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                  </motion.article>
+                </Link>
               ))}
             </AnimatePresence>
           </div>
