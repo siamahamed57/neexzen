@@ -23,8 +23,8 @@ const Footer: React.FC = () => {
     resources: [
       { name: 'Case Studies', href: '/projects' },
       { name: 'Documentation', href: '/blog' },
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Terms of Service', href: '#' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Terms of Service', href: '/terms-of-service' },
     ],
   };
 
@@ -146,8 +146,8 @@ const Footer: React.FC = () => {
               © {currentYear} Neexzen. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm text-neutral-500">
-              <Link to="#" className="hover:text-white transition-colors">Privacy</Link>
-              <Link to="#" className="hover:text-white transition-colors">Terms</Link>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
+              <Link to="/terms-of-service" className="hover:text-white transition-colors">Terms</Link>
               <Link to="#" className="hover:text-white transition-colors">Cookies</Link>
             </div>
           </div>
