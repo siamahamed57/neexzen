@@ -20,9 +20,9 @@ const About: React.FC = () => {
 
   const team = [
     { name: 'MD. Ibrahim Khalil', role: 'Founder & CEO / Developer', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771232115/619341310_122270096810080301_1226781632614892647_n.jpg_td9xor.jpg' },
-    { name: 'MD. Atikur Rahman', role: 'Full Stack Developer', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Zahid Hossain', role: 'Head of HR', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop' },
-    { name: 'MD. Nur Hossen', role: 'Security Lead', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop' },
+    { name: 'MD. Atikur Rahman', role: 'Full Stack Developer', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771251397/new_image_-_Md._Atikur_Rahman_hqfp44.jpg' },
+    { name: 'Zahid Hossain', role: 'Head of HR', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771251441/20250123_133704_-_Zahid_Hossain_vz8yhb.jpg' },
+    { name: 'MD. Nur Hossen', role: 'Security Lead', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1762953429/581003583_3733038910337042_4141296100562369170_n_sjzcir.jpg' },
   ];
 
   const values = [

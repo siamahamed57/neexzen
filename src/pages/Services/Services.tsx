@@ -16,11 +16,41 @@ const Services: React.FC = () => {
       color: 'purple',
       description: 'Cutting-edge web solutions that drive results',
       services: [
-        { title: 'High-Conversion Landing Pages', description: 'Immersive 3D & GSAP animations that turn visitors into customers.', icon: <Globe size={18} /> },
-        { title: 'E-commerce & Scalable Stores', description: 'Custom Shopify & WooCommerce stores with advanced plugin development.', icon: <ShoppingCart size={18} /> },
-        { title: 'Enterprise Systems (LMS/ERP/POS)', description: 'Custom internal tools to automate your workflow.', icon: <Server size={18} /> },
-        { title: 'Pixel-Perfect UI/UX', description: 'Figma/Adobe XD to high-performance, responsive code.', icon: <Palette size={18} /> },
-        { title: 'Performance & SEO', description: 'Technical audits and speed optimization for higher rankings.', icon: <Zap size={18} /> },
+        {
+          title: 'High-Conversion Landing Pages',
+          description: 'Immersive 3D & GSAP animations that turn visitors into customers.',
+          icon: <Globe size={18} />,
+          features: ['Custom 3D Elements', 'GSAP Animation', 'Conversion Optimization', 'Responsive Design'],
+          maintenance: 'Monthly Performance Checks'
+        },
+        {
+          title: 'E-commerce & Scalable Stores',
+          description: 'Custom Shopify & WooCommerce stores with advanced plugin development.',
+          icon: <ShoppingCart size={18} />,
+          features: ['Shopify/WooCommerce', 'Payment Gateway Integration', 'Inventory Management', 'Custom Themes'],
+          maintenance: 'Security Updates & Backups'
+        },
+        {
+          title: 'Enterprise Systems (LMS/ERP/POS)',
+          description: 'Custom internal tools to automate your workflow.',
+          icon: <Server size={18} />,
+          features: ['Role-Based Access', 'Automated Workflows', 'Real-time Reporting', 'API Integration'],
+          maintenance: 'Server Monitoring & Updates'
+        },
+        {
+          title: 'Pixel-Perfect UI/UX',
+          description: 'Figma/Adobe XD to high-performance, responsive code.',
+          icon: <Palette size={18} />,
+          features: ['User Research', 'Wireframing & Prototyping', 'Design System', 'Usability Testing'],
+          maintenance: 'Design Iterations'
+        },
+        {
+          title: 'Performance & SEO',
+          description: 'Technical audits and speed optimization for higher rankings.',
+          icon: <Zap size={18} />,
+          features: ['Core Web Vitals', 'On-Page SEO', 'Speed Optimization', 'Technical Audit'],
+          maintenance: 'Monthly SEO Reports'
+        },
       ],
     },
     {
@@ -30,11 +60,41 @@ const Services: React.FC = () => {
       color: 'blue',
       description: 'Native-feel apps for iOS & Android',
       services: [
-        { title: 'Cross-Platform Apps', description: 'High-performance Flutter & React Native apps for iOS & Android.', icon: <Layers size={18} /> },
-        { title: 'Web-to-Mobile Transformation', description: 'Convert your web platform into a native-feel mobile app.', icon: <Smartphone size={18} /> },
-        { title: 'On-Demand Ecosystems', description: 'Uber-style solutions with real-time GPS, payments & multi-user interfaces.', icon: <MapPin size={18} /> },
-        { title: 'IoT Dashboards', description: 'Real-time monitoring & control for smart devices with low-latency data sync.', icon: <Cpu size={18} /> },
-        { title: 'ASO & Launch Strategy', description: 'Metadata optimization for maximum app store visibility.', icon: <Rocket size={18} /> },
+        {
+          title: 'Cross-Platform Apps',
+          description: 'High-performance Flutter & React Native apps for iOS & Android.',
+          icon: <Layers size={18} />,
+          features: ['One Codebase', 'Native Performance', 'Offline Support', 'App Store Deployment'],
+          maintenance: 'OS Updates Compatibility'
+        },
+        {
+          title: 'Web-to-Mobile Transformation',
+          description: 'Convert your web platform into a native-feel mobile app.',
+          icon: <Smartphone size={18} />,
+          features: ['PWA Functionality', 'Push Notifications', 'Device Features Access', 'App Shell Architecture'],
+          maintenance: 'Regular App Updates'
+        },
+        {
+          title: 'On-Demand Ecosystems',
+          description: 'Uber-style solutions with real-time GPS, payments & multi-user interfaces.',
+          icon: <MapPin size={18} />,
+          features: ['Real-time Tracking', 'In-app Payments', 'User/Driver/Admin Apps', 'Rating System'],
+          maintenance: '24/7 Server Uptime'
+        },
+        {
+          title: 'IoT Dashboards',
+          description: 'Real-time monitoring & control for smart devices with low-latency data sync.',
+          icon: <Cpu size={18} />,
+          features: ['MQTT/WebSocket', 'Data Visualization', 'Remote Control', 'Alert System'],
+          maintenance: 'Device Firmware Updates'
+        },
+        {
+          title: 'ASO & Launch Strategy',
+          description: 'Metadata optimization for maximum app store visibility.',
+          icon: <Rocket size={18} />,
+          features: ['Keyword Research', 'Screenshot Design', 'Description Optimization', 'Review Management'],
+          maintenance: 'Rank Tracking'
+        },
       ],
     },
     {
@@ -44,10 +104,34 @@ const Services: React.FC = () => {
       color: 'emerald',
       description: 'Intelligent automation & smart solutions',
       services: [
-        { title: 'Enterprise Knowledge Retrieval (RAG)', description: '"Chat with your Data" systems for secure document querying.', icon: <MessageSquare size={18} /> },
-        { title: 'AI Customer Support', description: 'Intelligent assistants with multi-lingual support & human-in-the-loop escalation.', icon: <Users size={18} /> },
-        { title: 'Autonomous AI Agents', description: 'Multi-step automation for lead nurturing, data entry & business processes.', icon: <Settings size={18} /> },
-        { title: 'Custom LLM Fine-Tuning', description: 'Optimized open-source models (Llama 3, Mistral) for industry-specific accuracy.', icon: <Cpu size={18} /> },
+        {
+          title: 'Enterprise Knowledge Retrieval (RAG)',
+          description: '"Chat with your Data" systems for secure document querying.',
+          icon: <MessageSquare size={18} />,
+          features: ['Vector Database', 'Semantic Search', 'Context Awareness', 'Secure Data Handling'],
+          maintenance: 'Model Retraining'
+        },
+        {
+          title: 'AI Customer Support',
+          description: 'Intelligent assistants with multi-lingual support & human-in-the-loop escalation.',
+          icon: <Users size={18} />,
+          features: ['NLP/NLU', 'Multi-channel Support', 'Sentiment Analysis', 'Seamless Escalation'],
+          maintenance: 'Conversation Flow Updates'
+        },
+        {
+          title: 'Autonomous AI Agents',
+          description: 'Multi-step automation for lead nurturing, data entry & business processes.',
+          icon: <Settings size={18} />,
+          features: ['Task Automation', 'Decision Making Logic', 'Integration with CRMs', 'Adaptive Learning'],
+          maintenance: 'Workflow Optimization'
+        },
+        {
+          title: 'Custom LLM Fine-Tuning',
+          description: 'Optimized open-source models (Llama 3, Mistral) for industry-specific accuracy.',
+          icon: <Cpu size={18} />,
+          features: ['Dataset Preparation', 'Model Training', 'Evaluation & Benchmarking', 'Deployment'],
+          maintenance: 'Model Updates'
+        },
       ],
     },
   ];
@@ -122,6 +206,8 @@ const Services: React.FC = () => {
               </motion.div>
 
               <h1 className="hero-title">
+                <span className="text-white">Comprehensive</span>
+                <br />
                 <span className="text-shimmer">Services</span>
               </h1>
 
@@ -167,7 +253,7 @@ const Services: React.FC = () => {
               </motion.div>
 
               {/* Services Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.services.map((service, index) => (
                   <motion.div
                     key={service.title}
@@ -175,17 +261,56 @@ const Services: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.08 }}
-                    className="group relative p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-700 transition-all duration-300 overflow-hidden"
+                    className="group relative h-full"
                   >
-                    {/* Gradient overlay on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses.gradientFrom} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                    {/* Card Content (Visible by default) */}
+                    <div className="relative p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-700 transition-all duration-300 overflow-hidden h-[300px] flex flex-col justify-between group-hover:bg-neutral-900">
+                      {/* Gradient overlay on hover container */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses.gradientFrom} to-transparent opacity-0 group-hover:opacity-10 opacity-0 transition-opacity duration-300`} />
 
-                    <div className="relative z-10">
-                      <div className={`w-10 h-10 rounded-xl ${colorClasses.bg} border ${colorClasses.border} flex items-center justify-center ${colorClasses.text} ${colorClasses.hoverBg} group-hover:text-white group-hover:border-transparent transition-all duration-300`}>
-                        {service.icon}
+                      <div className="relative z-10">
+                        <div className={`w-12 h-12 rounded-xl ${colorClasses.bg} border ${colorClasses.border} flex items-center justify-center ${colorClasses.text} mb-6 transition-all duration-300`}>
+                          {service.icon}
+                        </div>
+                        <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-white transition-colors">{service.title}</h3>
+                        <p className="text-neutral-400 text-sm leading-relaxed">{service.description}</p>
                       </div>
-                      <h3 className="font-display text-base font-semibold text-white mt-4 mb-2 group-hover:text-white transition-colors">{service.title}</h3>
-                      <p className="text-neutral-400 text-sm leading-relaxed group-hover:text-neutral-300 transition-colors">{service.description}</p>
+
+                      {/* Read More hint */}
+                      <div className={`mt-auto pt-4 flex items-center gap-2 text-sm font-medium ${colorClasses.text} opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0`}>
+                        View Details <ArrowRight size={14} />
+                      </div>
+                    </div>
+
+                    {/* Desktop Hover Popup */}
+                    <div className="absolute inset-0 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none md:pointer-events-auto">
+                      <div className="absolute inset-0 bg-neutral-950/95 backdrop-blur-xl border border-neutral-700 rounded-2xl p-6 flex flex-col scale-95 group-hover:scale-100 transition-transform duration-300 shadow-2xl">
+                        <h3 className="font-display text-lg font-bold text-white mb-3">{service.title}</h3>
+
+                        <div className="space-y-3 flex-grow overflow-y-auto custom-scrollbar">
+                          <div>
+                            <h4 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${colorClasses.text}`}>What We Provide</h4>
+                            <ul className="space-y-1">
+                              {service.features?.map((feature, i) => (
+                                <li key={i} className="text-xs text-neutral-300 flex items-start gap-2">
+                                  <span className={`mt-1 w-1 h-1 rounded-full ${colorClasses.bg.replace('/10', '')}`} />
+                                  {feature}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h4 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${colorClasses.text}`}>Maintenance</h4>
+                            <p className="text-xs text-neutral-300">{service.maintenance}</p>
+                          </div>
+                        </div>
+
+                        <Link to="/contact" className="mt-4 w-full py-2.5 rounded-lg bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 group/btn">
+                          Contact Us
+                          <ArrowRight size={14} className="group-hover/btn:translate-x-0.5 transition-transform" />
+                        </Link>
+                      </div>
                     </div>
                   </motion.div>
                 ))}

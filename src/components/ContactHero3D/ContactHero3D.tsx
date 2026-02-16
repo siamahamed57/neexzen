@@ -97,7 +97,7 @@ const generateSpherePoints = (count: number, radius: number) => {
 };
 
 const ConnectionPoints = (props: any) => {
-    const ref = useRef<any>()
+    const ref = useRef<any>(null)
     // Generate points manually to avoid external dependency issues
     const [sphere] = useState(() => generateSpherePoints(400, 2.2))
 
