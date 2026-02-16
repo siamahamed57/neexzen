@@ -61,8 +61,8 @@ const Projects: React.FC = () => {
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${activeCategory === category
-                    ? 'bg-white text-black'
-                    : 'bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-700 hover:border-neutral-600'
+                  ? 'bg-white text-black'
+                  : 'bg-neutral-900 text-neutral-300 hover:text-white border border-neutral-700 hover:border-neutral-600'
                   }`}
               >
                 {category}
@@ -81,26 +81,45 @@ const Projects: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group relative aspect-[4/3] rounded-3xl overflow-hidden border border-neutral-800"
+                  className="group relative aspect-[4/3] rounded-3xl overflow-hidden border border-neutral-800 cursor-pointer"
                 >
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+                  {/* Background Image */}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                  />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+                  {/* Gradient Overlay (Default) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-0 transition-opacity duration-500" />
 
-                  <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                  {/* Default Content (Visible initially, fades out on hover) */}
+                  <div className="absolute inset-0 p-8 flex flex-col justify-end group-hover:opacity-0 transition-opacity duration-500">
                     <span className="text-xs text-blue-400 font-medium uppercase tracking-wider mb-2">{project.category}</span>
-                    <h3 className="font-display text-2xl font-bold text-white mb-2">{project.title}</h3>
-                    <p className="text-sm text-neutral-300 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{project.description}</p>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <span key={tech} className="text-xs text-neutral-400 bg-neutral-800 px-3 py-1 rounded-full">{tech}</span>
-                      ))}
-                    </div>
+                    <h3 className="font-display text-2xl font-bold text-white">{project.title}</h3>
                   </div>
 
-                  <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white group-hover:hover:text-black cursor-pointer">
-                    <ExternalLink size={18} className="text-white group-hover:hover:text-black" />
+                  {/* Hover Popup Overlay */}
+                  <div className="absolute inset-0 bg-neutral-900/95 backdrop-blur-sm p-8 flex flex-col justify-center items-center text-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out z-10">
+                    <span className="text-xs text-blue-400 font-medium uppercase tracking-wider mb-3">{project.category}</span>
+                    <h3 className="font-display text-2xl font-bold text-white mb-4">{project.title}</h3>
+                    <p className="text-sm text-neutral-300 mb-6 line-clamp-3">{project.description}</p>
+
+                    <div className="flex flex-wrap justify-center gap-2 mb-8">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <span key={tech} className="text-[10px] uppercase font-medium text-neutral-400 bg-neutral-800/50 border border-neutral-700 px-3 py-1 rounded-full">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href="#"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-300 group/btn"
+                    >
+                      Live Site
+                      <ExternalLink size={16} className="group-hover/btn:rotate-45 transition-transform duration-300" />
+                    </a>
                   </div>
                 </motion.div>
               ))}
