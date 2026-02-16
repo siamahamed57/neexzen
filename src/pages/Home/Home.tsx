@@ -12,9 +12,9 @@ const Home: React.FC = () => {
   ];
 
   const stats = [
-    { value: '100+', label: 'Projects Delivered' },
-    { value: '50+', label: 'Happy Clients' },
-    { value: '10+', label: 'Years Experience' },
+    { value: '15+', label: 'Projects Delivered' },
+    { value: '20+', label: 'Happy Clients' },
+    { value: '5+', label: 'Years Experience' },
   ];
 
   const processSteps = [
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <button className="btn-secondary group">
-                  <Play size={16} className="text-purple-400" />
+                  <Play size={16} className="tex      t-purple-400" />
                   Watch Demo
                 </button>
               </div>
