@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Sphere, Torus, Icosahedron, Trail, MeshTransmissionMaterial, Stars, Environment } from '@react-three/drei';
+import { Float, MeshDistortMaterial, Sphere, Torus, Icosahedron, Trail, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Mouse Position Hook
@@ -408,7 +408,6 @@ const Lights: React.FC = () => {
 // Main Scene Component with all 3D elements
 const Scene: React.FC = () => {
     const groupRef = useRef<THREE.Group>(null);
-    const { viewport } = useThree();
     const mousePosition = useMousePosition();
 
     useFrame((state) => {

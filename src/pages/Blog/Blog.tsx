@@ -4,6 +4,7 @@ import { Search, Clock, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
 import { posts } from '../../data/blogData';
+import BlogHero3D from '../../components/BlogHero3D/BlogHero3D';
 
 const Blog: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -26,36 +27,51 @@ const Blog: React.FC = () => {
       {/* Hero */}
       <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden">
         <CursorGlow containerRef={heroRef} />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-1/3 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[150px] animate-subtle-glow" />
-          <div className="absolute bottom-0 left-1/3 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[150px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
+
+        {/* Background Gradients */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-1/3 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[150px] animate-subtle-glow" />
+          <div className="absolute bottom-0 left-1/3 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-16">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
-              <span className="text-sm text-purple-300">Blog</span>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-xl">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
+                <span className="text-sm text-purple-300">Blog</span>
+              </motion.div>
+
+              <h1 className="hero-title">
+                <span className="text-white">Insights &</span>
+                <br />
+                <span className="text-shimmer bg-gradient-to-r from-purple-400 via-fuchsia-400 to-purple-400 bg-clip-text text-transparent">Resources</span>
+              </h1>
+
+              <p className="hero-subtitle mt-6 max-w-xl text-neutral-300">
+                Insights on AI, software engineering, and digital innovation
+                from our team of experts.
+              </p>
+
+              <div className="mt-8 max-w-md">
+                <div className="relative">
+                  <input type="text" placeholder="Search articles..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="input pl-12 bg-neutral-900/50 backdrop-blur-sm border-neutral-800 focus:border-purple-500/50" />
+                  <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400" />
+                </div>
+              </div>
             </motion.div>
 
-            <h1 className="hero-title">
-              <span className="text-white">Insights &</span>
-              <br />
-              <span className="text-purple-400">Resources</span>
-            </h1>
-
-            <p className="hero-subtitle mt-6 max-w-xl">
-              Insights on AI, software engineering, and digital innovation
-              from our team of experts.
-            </p>
-
-            <div className="mt-8 max-w-md">
-              <div className="relative">
-                <input type="text" placeholder="Search articles..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="input pl-12" />
-                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400" />
-              </div>
-            </div>
-          </motion.div>
+            {/* Right 3D Model */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="h-[500px] w-full relative"
+            >
+              <BlogHero3D />
+            </motion.div>
+          </div>
         </div>
       </section>
 

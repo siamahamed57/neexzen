@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Smartphone, Brain, Globe, ShoppingCart, Server, Palette, Zap, Layers, MapPin, Rocket, MessageSquare, Users, Cpu, Settings } from 'lucide-react';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
+import ServicesHero3D from '../../components/ServicesHero3D/ServicesHero3D';
 
 const Services: React.FC = () => {
   const heroRef = useRef<HTMLElement | null>(null);
@@ -92,7 +93,7 @@ const Services: React.FC = () => {
         <CursorGlow containerRef={heroRef} />
 
         {/* Hero-specific accent glows */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           <motion.div
             animate={{
               scale: [1, 1.1, 1],
@@ -111,24 +112,35 @@ const Services: React.FC = () => {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-16">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-              <span className="text-sm text-purple-300">What We Do</span>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-xl">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                <span className="text-sm text-purple-300">What We Do</span>
+              </motion.div>
+
+              <h1 className="hero-title">
+                <span className="text-shimmer">Services</span>
+              </h1>
+
+              <p className="hero-subtitle mt-6 text-neutral-300">
+                From AI-driven innovations to pixel-perfect development, we provide
+                a complete suite of services to elevate your business.
+              </p>
             </motion.div>
 
-            <h1 className="hero-title">
-              <span className="text-white">Comprehensive</span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-violet-400 to-purple-400">Digital Solutions</span>
-            </h1>
-
-            <p className="hero-subtitle mt-6 max-w-xl text-neutral-300">
-              From AI-driven innovations to pixel-perfect development, we provide
-              a complete suite of services to elevate your business.
-            </p>
-          </motion.div>
+            {/* Right 3D Model */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="h-[500px] w-full relative"
+            >
+              <ServicesHero3D />
+            </motion.div>
+          </div>
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Eye, Linkedin, Twitter, Github, ChevronDown, Sparkles, Users, Award, Zap } from 'lucide-react';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
+import AboutHero3D from '../../components/AboutHero3D/AboutHero3D';
 
 const About: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -18,10 +19,10 @@ const About: React.FC = () => {
   ];
 
   const team = [
-    { name: 'Siam Ahmed', role: 'Founder & CEO', image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Sarah Chen', role: 'Lead Developer', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Marcus Johnson', role: 'Head of Design', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Emily Park', role: 'AI Lead', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop' },
+    { name: 'MD. Ibrahim Khalil', role: 'Founder & CEO / Developer', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771232115/619341310_122270096810080301_1226781632614892647_n.jpg_td9xor.jpg' },
+    { name: 'MD. Atikur Rahman', role: 'Full Stack Developer', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop' },
+    { name: 'Zahid Hossain', role: 'Head of HR', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop' },
+    { name: 'MD. Nur Hossen', role: 'Security Lead', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop' },
   ];
 
   const values = [
@@ -45,29 +46,44 @@ const About: React.FC = () => {
       {/* Hero */}
       <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden">
         <CursorGlow containerRef={heroRef} />
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/3 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[150px] animate-subtle-glow" />
-          <div className="absolute bottom-0 right-1/3 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[150px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
+
+        {/* Background Gradients */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/3 w-[800px] h-[800px] bg-purple-500/10 rounded-full blur-[150px] animate-subtle-glow" />
+          <div className="absolute bottom-0 right-1/3 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-[150px] animate-subtle-glow" style={{ animationDelay: '2s' }} />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 py-16">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
-              <span className="text-sm text-purple-300">About Us</span>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-xl">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
+                <span className="text-sm text-purple-300">About Us</span>
+              </motion.div>
+
+              <h1 className="hero-title">
+                <span className="text-white">Pioneering the</span>
+                <br />
+                <span className="text-shimmer bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">Future of Digital</span>
+              </h1>
+
+              <p className="hero-subtitle mt-6 max-w-xl text-neutral-300">
+                We craft intelligent, human-centered software solutions that
+                transform businesses and define the future of technology.
+              </p>
             </motion.div>
 
-            <h1 className="hero-title">
-              <span className="text-white">Pioneering the</span>
-              <br />
-              <span className="text-purple-400">Future of Digital</span>
-            </h1>
-
-            <p className="hero-subtitle mt-6 max-w-xl">
-              We craft intelligent, human-centered software solutions that
-              transform businesses and define the future of technology.
-            </p>
-          </motion.div>
+            {/* Right 3D Model */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="h-[500px] w-full relative"
+            >
+              <AboutHero3D />
+            </motion.div>
+          </div>
         </div>
       </section>
 
