@@ -55,6 +55,8 @@ const GlobalSignal: React.FC<{ mousePosition: { x: number; y: number } }> = ({ m
                         emissive="#10b981"
                         emissiveIntensity={0.4}
                         wireframe
+                        transparent
+                        opacity={0.6}
                     />
                 </Sphere>
                 {/* Inner Core */}

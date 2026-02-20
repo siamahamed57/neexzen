@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, TorusKnot, MeshDistortMaterial, Stars, Sparkles, Icosahedron } from '@react-three/drei';
+import { Float, MeshDistortMaterial, Stars, Sparkles, Icosahedron } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Mouse Position Hook
@@ -21,10 +21,11 @@ const useMousePosition = () => {
     return mousePosition;
 };
 
-// Neon Flux Knot - Liquid energy concept
-const FluxKnot: React.FC<{ mousePosition: { x: number; y: number } }> = ({ mousePosition }) => {
+// Service Core - Representing modular services and stability
+const ServiceCore: React.FC<{ mousePosition: { x: number; y: number } }> = ({ mousePosition }) => {
     const meshRef = useRef<THREE.Mesh>(null);
     const outerGroupRef = useRef<THREE.Group>(null);
+    const modulesRef = useRef<THREE.Group>(null);
 
     useFrame((state) => {
         if (meshRef.current) {
@@ -37,25 +38,57 @@ const FluxKnot: React.FC<{ mousePosition: { x: number; y: number } }> = ({ mouse
             outerGroupRef.current.rotation.x = THREE.MathUtils.lerp(outerGroupRef.current.rotation.x, mousePosition.y * 0.2, 0.1);
             outerGroupRef.current.rotation.y = THREE.MathUtils.lerp(outerGroupRef.current.rotation.y, mousePosition.x * 0.2, 0.1);
         }
+
+        if (modulesRef.current) {
+            modulesRef.current.rotation.y = state.clock.elapsedTime * 0.5;
+        }
     });
+
+    const modules = useMemo(() => {
+        const temp = [];
+        for (let i = 0; i < 6; i++) {
+            const angle = (i / 6) * Math.PI * 2;
+            temp.push({
+                position: [Math.cos(angle) * 2, Math.sin(angle * 2) * 0.5, Math.sin(angle) * 2] as [number, number, number],
+                rotation: [Math.random() * THREE.MathUtils.DEG2RAD * 180, Math.random() * THREE.MathUtils.DEG2RAD * 180, 0] as [number, number, number],
+            });
+        }
+        return temp;
+    }, []);
 
     return (
         <group ref={outerGroupRef}>
-            <Float speed={4} rotationIntensity={1} floatIntensity={1}>
-                {/* Main Liquid Knot */}
-                <TorusKnot args={[1.2, 0.35, 128, 32]} ref={meshRef}>
+            <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
+                {/* Main Service Core */}
+                <Icosahedron args={[1.2, 2]} ref={meshRef}>
                     <MeshDistortMaterial
                         color="#06b6d4"
                         attach="material"
                         distort={0.4}
-                        speed={3}
+                        speed={2}
                         roughness={0}
                         metalness={0.9}
                         emissive="#22d3ee"
-                        emissiveIntensity={0.8}
+                        emissiveIntensity={0.5}
+                        transparent
+                        opacity={0.6}
                     />
-                </TorusKnot>
+                </Icosahedron>
             </Float>
+
+            {/* Orbiting Service Modules */}
+            <group ref={modulesRef}>
+                {modules.map((mod, i) => (
+                    <group key={i} position={mod.position} rotation={mod.rotation}>
+                        <Float speed={3} rotationIntensity={2}>
+                            <mesh>
+                                <boxGeometry args={[0.2, 0.2, 0.2]} />
+                                <meshStandardMaterial color="#3b82f6" emissive="#3b82f6" emissiveIntensity={1} />
+                            </mesh>
+                        </Float>
+                    </group>
+                ))}
+            </group>
 
             {/* Geometric Artifacts */}
             <Float speed={2} rotationIntensity={2} floatIntensity={1}>
@@ -70,7 +103,7 @@ const FluxKnot: React.FC<{ mousePosition: { x: number; y: number } }> = ({ mouse
                 scale={5}
                 size={4}
                 speed={1}
-                opacity={0.8}
+                opacity={0.6}
                 color="#a5f3fc"
             />
         </group>
@@ -83,7 +116,7 @@ const Scene: React.FC = () => {
 
     return (
         <group>
-            <FluxKnot mousePosition={mousePosition} />
+            <ServiceCore mousePosition={mousePosition} />
         </group>
     );
 };

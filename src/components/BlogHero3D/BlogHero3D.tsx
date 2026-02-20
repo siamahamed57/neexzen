@@ -51,6 +51,8 @@ const AbstractForm: React.FC<{ mousePosition: { x: number; y: number } }> = ({ m
                     clearcoat={1}
                     clearcoatRoughness={0.1}
                     radius={1}
+                    transparent
+                    opacity={0.5}
                 />
             </Octahedron>
         </Float>

@@ -56,6 +56,8 @@ const Constellation: React.FC<{ mousePosition: { x: number; y: number } }> = ({ 
                         metalness={0.8}
                         emissive="#d946ef"
                         emissiveIntensity={0.6}
+                        transparent
+                        opacity={0.6}
                     />
                 </Sphere>
             </Float>

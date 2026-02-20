@@ -63,6 +63,8 @@ const TechNexus: React.FC<{ mousePosition: { x: number; y: number } }> = ({ mous
                         metalness={1}
                         emissive="#1d4ed8"
                         emissiveIntensity={0.8}
+                        transparent
+                        opacity={0.5}
                     />
                 </Icosahedron>
             </Float>
