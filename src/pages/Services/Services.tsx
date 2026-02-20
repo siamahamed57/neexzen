@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Smartphone, Brain, Globe, ShoppingCart, Server, Palette, Zap, Layers, MapPin, Rocket, MessageSquare, Users, Cpu, Settings } from 'lucide-react';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
-import ServicesHero3D from '../../components/ServicesHero3D/ServicesHero3D';
+// import ServicesHero3D from '../../components/ServicesHero3D/ServicesHero3D';
 
 const Services: React.FC = () => {
   const heroRef = useRef<HTMLElement | null>(null);
@@ -224,7 +224,7 @@ const Services: React.FC = () => {
               transition={{ duration: 1 }}
               className="h-[500px] w-full relative"
             >
-              <ServicesHero3D />
+              {/* <ServicesHero3D /> */}
             </motion.div>
           </div>
         </div>
@@ -234,7 +234,7 @@ const Services: React.FC = () => {
       {serviceCategories.map((category, catIndex) => {
         const colorClasses = getColorClasses(category.color);
         return (
-          <section key={category.id} className={`relative py-24 ${catIndex > 0 ? 'border-t border-neutral-800/50' : ''}`}>
+          <section key={category.id} className={`relative py - 24 ${catIndex > 0 ? 'border-t border-neutral-800/50' : ''} `}>
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
               {/* Category Header */}
               <motion.div
@@ -243,7 +243,7 @@ const Services: React.FC = () => {
                 viewport={{ once: true }}
                 className="flex items-center gap-5 mb-12"
               >
-                <div className={`w-16 h-16 rounded-2xl ${colorClasses.bg} border ${colorClasses.border} flex items-center justify-center ${colorClasses.text}`}>
+                <div className={`w - 16 h - 16 rounded - 2xl ${colorClasses.bg} border ${colorClasses.border} flex items - center justify - center ${colorClasses.text} `}>
                   {category.icon}
                 </div>
                 <div>
@@ -266,10 +266,10 @@ const Services: React.FC = () => {
                     {/* Card Content (Visible by default) */}
                     <div className="relative p-6 rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-700 transition-all duration-300 overflow-hidden h-[300px] flex flex-col justify-between group-hover:bg-neutral-900">
                       {/* Gradient overlay on hover container */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses.gradientFrom} to-transparent opacity-0 group-hover:opacity-10 opacity-0 transition-opacity duration-300`} />
+                      <div className={`absolute inset - 0 bg - gradient - to - br ${colorClasses.gradientFrom} to - transparent opacity - 0 group - hover: opacity - 10 transition - opacity duration - 300`} />
 
                       <div className="relative z-10">
-                        <div className={`w-12 h-12 rounded-xl ${colorClasses.bg} border ${colorClasses.border} flex items-center justify-center ${colorClasses.text} mb-6 transition-all duration-300`}>
+                        <div className={`w - 12 h - 12 rounded - xl ${colorClasses.bg} border ${colorClasses.border} flex items - center justify - center ${colorClasses.text} mb - 6 transition - all duration - 300`}>
                           {service.icon}
                         </div>
                         <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-white transition-colors">{service.title}</h3>
@@ -277,7 +277,7 @@ const Services: React.FC = () => {
                       </div>
 
                       {/* Read More hint */}
-                      <div className={`mt-auto pt-4 flex items-center gap-2 text-sm font-medium ${colorClasses.text} opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0`}>
+                      <div className={`mt - auto pt - 4 flex items - center gap - 2 text - sm font - medium ${colorClasses.text} opacity - 0 group - hover: opacity - 100 transition - opacity duration - 300 transform translate - y - 2 group - hover: translate - y - 0`}>
                         View Details <ArrowRight size={14} />
                       </div>
                     </div>
@@ -289,11 +289,11 @@ const Services: React.FC = () => {
 
                         <div className="space-y-3 flex-grow overflow-y-auto custom-scrollbar">
                           <div>
-                            <h4 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${colorClasses.text}`}>What We Provide</h4>
+                            <h4 className={`text - xs font - semibold uppercase tracking - wider mb - 2 ${colorClasses.text} `}>What We Provide</h4>
                             <ul className="space-y-1">
                               {service.features?.map((feature, i) => (
                                 <li key={i} className="text-xs text-neutral-300 flex items-start gap-2">
-                                  <span className={`mt-1 w-1 h-1 rounded-full ${colorClasses.bg.replace('/10', '')}`} />
+                                  <span className={`mt - 1 w - 1 h - 1 rounded - full ${colorClasses.bg.replace('/10', '')} `} />
                                   {feature}
                                 </li>
                               ))}
@@ -301,7 +301,7 @@ const Services: React.FC = () => {
                           </div>
 
                           <div>
-                            <h4 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${colorClasses.text}`}>Maintenance</h4>
+                            <h4 className={`text - xs font - semibold uppercase tracking - wider mb - 2 ${colorClasses.text} `}>Maintenance</h4>
                             <p className="text-xs text-neutral-300">{service.maintenance}</p>
                           </div>
                         </div>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Eye, Linkedin, Twitter, Github, ChevronDown, Sparkles, Users, Award, Zap } from 'lucide-react';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
-import AboutHero3D from '../../components/AboutHero3D/AboutHero3D';
+// import AboutHero3D from '../../components/AboutHero3D/AboutHero3D';
 
 const About: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -81,7 +81,7 @@ const About: React.FC = () => {
               transition={{ duration: 1 }}
               className="h-[500px] w-full relative"
             >
-              <AboutHero3D />
+              {/* <AboutHero3D /> */}
             </motion.div>
           </div>
         </div>

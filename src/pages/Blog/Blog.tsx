@@ -4,7 +4,7 @@ import { Search, Clock, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
 import { posts } from '../../data/blogData';
-import BlogHero3D from '../../components/BlogHero3D/BlogHero3D';
+// import BlogHero3D from '../../components/BlogHero3D/BlogHero3D';
 
 const Blog: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -69,7 +69,7 @@ const Blog: React.FC = () => {
               transition={{ duration: 1 }}
               className="h-[500px] w-full relative"
             >
-              <BlogHero3D />
+              {/* <BlogHero3D /> */}
             </motion.div>
           </div>
         </div>

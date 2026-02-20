@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, ChevronDown, Send } from 'lucide-react';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
-import ContactHero3D from '../../components/ContactHero3D/ContactHero3D';
+// import ContactHero3D from '../../components/ContactHero3D/ContactHero3D';
 
 const Contact: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -63,7 +63,7 @@ const Contact: React.FC = () => {
               transition={{ duration: 1 }}
               className="h-[500px] w-full relative"
             >
-              <ContactHero3D />
+              {/* <ContactHero3D /> */}
             </motion.div>
           </div>
         </div>
