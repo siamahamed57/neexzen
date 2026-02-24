@@ -4,8 +4,25 @@ import { Mail, Phone, MapPin, Clock, ChevronDown, Send } from 'lucide-react';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
 // import ContactHero3D from '../../components/ContactHero3D/ContactHero3D';
 
+type ContactFormState = {
+  name: string;
+  email: string;
+  company: string;
+  service: string;
+  message: string;
+};
+
 const Contact: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitMessage, setSubmitMessage] = React.useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [formData, setFormData] = React.useState<ContactFormState>({
+    name: '',
+    email: '',
+    company: '',
+    service: '',
+    message: '',
+  });
 
   const contactInfo = [
     { icon: <Mail size={20} />, label: 'Email', value: 'info@neexzen.com', href: 'mailto:info@neexzen.com' },
@@ -22,6 +39,48 @@ const Contact: React.FC = () => {
   ];
 
   const [openFaq, setOpenFaq] = React.useState<number | null>(null);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = event.target;
+    setFormData((previous) => ({ ...previous, [id]: value }));
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage(null);
+
+    try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? '';
+      const response = await fetch(`${apiBaseUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Unable to send your message right now.');
+      }
+
+      setSubmitMessage({ type: 'success', text: 'Thanks! Your message has been sent successfully.' });
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        service: '',
+        message: '',
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unable to send your message right now.';
+      setSubmitMessage({ type: 'error', text: message });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main className="bg-black text-white">
@@ -78,26 +137,26 @@ const Contact: React.FC = () => {
               <div className="p-10 rounded-2xl bg-neutral-900/50 border border-neutral-800">
                 <h2 className="font-display text-2xl font-bold text-white mb-8">Send us a message</h2>
 
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm text-neutral-300 mb-2">Your Name</label>
-                      <input type="text" id="name" className="input" placeholder="John Doe" />
+                      <input type="text" id="name" className="input" placeholder="John Doe" value={formData.name} onChange={handleInputChange} required />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm text-neutral-300 mb-2">Email Address</label>
-                      <input type="email" id="email" className="input" placeholder="you@example.com" />
+                      <input type="email" id="email" className="input" placeholder="you@example.com" value={formData.email} onChange={handleInputChange} required />
                     </div>
                   </div>
 
                   <div>
                     <label htmlFor="company" className="block text-sm text-neutral-300 mb-2">Company (Optional)</label>
-                    <input type="text" id="company" className="input" placeholder="Your Company" />
+                    <input type="text" id="company" className="input" placeholder="Your Company" value={formData.company} onChange={handleInputChange} />
                   </div>
 
                   <div>
                     <label htmlFor="service" className="block text-sm text-neutral-300 mb-2">What can we help with?</label>
-                    <select id="service" className="input">
+                    <select id="service" className="input" value={formData.service} onChange={handleInputChange} required>
                       <option value="" className="bg-black">Select a service</option>
                       <option value="web" className="bg-black">Web Development</option>
                       <option value="ai" className="bg-black">AI & Machine Learning</option>
@@ -110,11 +169,17 @@ const Contact: React.FC = () => {
 
                   <div>
                     <label htmlFor="message" className="block text-sm text-neutral-300 mb-2">Project Details</label>
-                    <textarea id="message" rows={5} className="input resize-none" placeholder="Tell us about your project, timeline, and budget..." />
+                    <textarea id="message" rows={5} className="input resize-none" placeholder="Tell us about your project, timeline, and budget..." value={formData.message} onChange={handleInputChange} required />
                   </div>
 
-                  <button type="submit" className="btn-primary w-full justify-center text-base py-4 group">
-                    Send Message
+                  {submitMessage && (
+                    <p className={submitMessage.type === 'success' ? 'text-green-400 text-sm' : 'text-red-400 text-sm'}>
+                      {submitMessage.text}
+                    </p>
+                  )}
+
+                  <button type="submit" disabled={isSubmitting} className="btn-primary w-full justify-center text-base py-4 group disabled:opacity-70 disabled:cursor-not-allowed">
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                     <Send size={18} className="group-hover:translate-x-1 transition-transform" />
                   </button>
                 </form>
