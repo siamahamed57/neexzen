@@ -1,5 +1,5 @@
-import React, { Suspense, useState, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
+import React, { Suspense, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, Code, Smartphone, Bot, Play,
@@ -11,9 +11,9 @@ import Hero3D from '../../components/Hero3D/Hero3D';
 
 /* ─── Data ─── */
 const stats = [
-  { value: '15+', label: 'Projects Delivered', desc: 'Across 5 countries', color: '#a78bfa', glow: 'rgba(167,139,250,0.4)' },
-  { value: '20+', label: 'Happy Clients', desc: 'Long-term partnerships', color: '#38bdf8', glow: 'rgba(56,189,248,0.4)' },
-  { value: '5+', label: 'Years Experience', desc: 'In software & AI', color: '#34d399', glow: 'rgba(52,211,153,0.4)' },
+  { value: '15+', label: 'Projects', desc: 'Successfully delivered across 5 countries worldwide.', color: '#a78bfa' },
+  { value: '20+', label: 'Clients', desc: 'Long-term partnerships built on trust and results.', color: '#38bdf8' },
+  { value: '05+', label: 'Years', desc: 'Deep expertise in software development & AI.', color: '#34d399' },
 ];
 
 const topProjects = [
@@ -51,43 +51,75 @@ const faqs = [
 
 const clients = ['Unies', 'Uixpertise', 'Lyvaa', 'Neexzen', 'Tusqa Well Being', 'AcholComputers', 'Dr Shaiful Islam', 'N3X Venture'];
 
-/* ─── Small reusable: stat card ─── */
+/* ─── Modern Unique Stat Block ─── */
 const StatCard: React.FC<{ stat: typeof stats[0]; index: number }> = ({ stat, index }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const mx = useMotionValue(50);
-  const my = useMotionValue(50);
-  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const r = cardRef.current?.getBoundingClientRect();
-    if (!r) return;
-    mx.set(((e.clientX - r.left) / r.width) * 100);
-    my.set(((e.clientY - r.top) / r.height) * 100);
-  };
   return (
     <motion.div
-      ref={cardRef}
-      onMouseMove={onMove}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.55, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -6, boxShadow: `0 0 0 1.5px ${stat.color}50, 0 16px 48px ${stat.glow}` }}
-      className="group relative rounded-2xl overflow-hidden p-8 text-center cursor-default"
-      style={{ background: 'linear-gradient(160deg,#0e0e1c,#08080f)', boxShadow: '0 0 0 1px rgba(255,255,255,0.06)' }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative group p-8 md:p-10 rounded-[2rem] overflow-hidden flex flex-col justify-between
+        ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}
+        ${index === 1 ? 'md:col-span-1 md:row-span-1' : ''}
+        ${index === 2 ? 'md:col-span-1 md:row-span-1' : ''}
+      `}
+      style={{
+        background: 'linear-gradient(145deg, rgba(20,20,30,0.8) 0%, rgba(10,10,15,0.9) 100%)',
+        boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.05), 0 20px 40px rgba(0,0,0,0.4)',
+        minHeight: index === 0 ? '340px' : '220px'
+      }}
+      whileHover={{ y: -8, boxShadow: `inset 0 0 0 1.5px ${stat.color}40, 0 30px 60px rgba(0,0,0,0.6)` }}
     >
-      {/* Mouse spotlight */}
-      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{ background: `radial-gradient(160px circle at ${mx.get()}% ${my.get()}%, ${stat.color}12, transparent)` }} />
-      {/* Top accent */}
-      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg,transparent,${stat.color}80,transparent)` }} />
-      {/* Value */}
-      <motion.p
-        className="font-display text-6xl md:text-7xl font-black leading-none mb-3"
-        style={{ color: stat.color, filter: `drop-shadow(0 0 20px ${stat.glow})` }}
-      >
-        {stat.value}
-      </motion.p>
-      <p className="font-display text-base font-bold text-white mb-1">{stat.label}</p>
-      <p className="text-xs text-neutral-500">{stat.desc}</p>
+      {/* Dynamic Background Glow */}
+      <div
+        className="absolute -top-32 -right-32 w-64 h-64 rounded-full blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity duration-700"
+        style={{ background: stat.color }}
+      />
+      <div
+        className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full blur-[80px] opacity-10 group-hover:opacity-30 transition-opacity duration-700 delay-100"
+        style={{ background: stat.color }}
+      />
+
+      <div className="relative z-10 flex justify-between items-start mb-auto">
+        <span className="text-sm font-bold tracking-widest uppercase text-white/40 group-hover:text-white/80 transition-colors">
+          Our Impact
+        </span>
+        <Sparkles size={16} style={{ color: stat.color }} className="opacity-50 group-hover:opacity-100 transition-opacity" />
+      </div>
+
+      <div className="relative z-10 mt-12">
+        <motion.div
+          className="font-display font-black leading-[0.85] tracking-tighter mb-4"
+          style={{
+            fontSize: index === 0 ? 'clamp(5rem, 12vw, 9rem)' : 'clamp(4rem, 8vw, 6rem)',
+            color: 'transparent',
+            WebkitTextStroke: `1.5px rgba(255,255,255,0.2)`,
+            backgroundImage: `linear-gradient(135deg, ${stat.color} 0%, #fff 100%)`,
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+          }}
+          whileHover={{ WebkitTextStroke: `0px` }}
+          transition={{ duration: 0.3 }}
+        >
+          {stat.value}
+        </motion.div>
+
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <h3 className="font-display text-2xl font-bold text-white mb-2">{stat.label}</h3>
+            <p className="text-sm text-neutral-400 max-w-[280px] leading-relaxed">{stat.desc}</p>
+          </div>
+
+          <motion.div
+            className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center shrink-0"
+            style={{ background: 'rgba(255,255,255,0.03)' }}
+            whileHover={{ background: stat.color, color: '#000', borderColor: stat.color }}
+          >
+            <ArrowUpRight size={16} />
+          </motion.div>
+        </div>
+      </div>
     </motion.div>
   );
 };
@@ -221,15 +253,21 @@ const Home: React.FC = () => {
       </section>
 
       {/* ════════════════════════════════════════
-          STATS — redesigned
+          IMPACT / STATS — Bento Grid Design
       ════════════════════════════════════════ */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <p className="section-label">By The Numbers</p>
-            <h2 className="section-title">Our Impact</h2>
+      <section className="py-24 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/5 rounded-full blur-[200px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-14 max-w-2xl">
+            <p className="section-label mb-3">By The Numbers</p>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
+              Driving real <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-sky-400">impact</span> across the globe.
+            </h2>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 w-full">
             {stats.map((stat, i) => <StatCard key={stat.label} stat={stat} index={i} />)}
           </div>
         </div>
