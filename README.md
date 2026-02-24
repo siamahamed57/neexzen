@@ -1,82 +1,50 @@
-@echo off
-title NEEXZEN Software Environment
-color 0A
-cls
+#  NEEXZEN 
 
-echo.
-echo ===============================================================
-echo                      NEEXZEN SOFTWARE SYSTEM
-echo ===============================================================
-echo  Founder     : Mohammad Ibrahim Khalil
-echo  Company     : NEEXZEN
-echo  Location    : Bangladesh
-echo  Services    : Web Dev ^| UI/UX ^| Security ^| SEO ^| SaaS
-echo ===============================================================
-echo.
+> Professional Software Solution by NEEXZEN  
+> Building Scalable Digital Systems for the Future
 
-echo Initializing Secure Development Environment...
-timeout /t 2 >nul
-echo Loading Core Modules...
-timeout /t 2 >nul
-echo Connecting to Project Workspace...
-timeout /t 2 >nul
-echo.
+---
 
-echo ===============================================================
-echo                    SELECT PROJECT TYPE
-echo ===============================================================
-echo  1. Web Development Project
-echo  2. MERN Stack Application
-echo  3. WordPress Project
-echo  4. Security / Cyber Project
-echo  5. AI / Machine Learning Project
-echo  6. Exit
-echo ===============================================================
-echo.
+## About
 
-set /p choice=Enter your choice:
+**Neexzen** is a modern, scalable, and high-performance software solution developed by **NEEXZEN**.  
+This system is designed to deliver secure, efficient, and user-friendly digital experiences.
 
-if "%choice%"=="1" goto web
-if "%choice%"=="2" goto mern
-if "%choice%"=="3" goto wp
-if "%choice%"=="4" goto security
-if "%choice%"=="5" goto ai
-if "%choice%"=="6" exit
+It focuses on:
+- Performance optimization
+- Clean architecture
+- Security-first development
+- Scalable deployment structure
 
-:web
-cls
-echo Starting NEEXZEN Web Development Environment...
-start cmd /k "echo NEEXZEN Web Project && code ."
-goto end
+---
 
-:mern
-cls
-echo Starting NEEXZEN MERN Stack System...
-start cmd /k "npm run server"
-start cmd /k "npm run client"
-goto end
+## Key Features
 
-:wp
-cls
-echo Launching WordPress Development Environment...
-start cmd /k "echo WordPress Project Ready"
-goto end
+- Secure Authentication System
+- Optimized Performance
+- Advanced Dashboard
+- Fully Responsive Design
+- Production Ready Deployment
+- Clean & Scalable Code Structure
 
-:security
-cls
-echo Initializing Cyber Security Lab...
-start cmd /k "echo Real-Time Cyberattack Detection Module"
-goto end
+---
 
-:ai
-cls
-echo Loading AI & Machine Learning Workspace...
-start cmd /k "echo AI System Ready"
-goto end
+## Tech Stack
 
-:end
-echo.
-echo ===============================================================
-echo         NEEXZEN SYSTEM SUCCESSFULLY INITIALIZED
-echo ===============================================================
-pause
+- React.js
+- Node.js
+- Express.js
+- MongoDB
+- Tailwind CSS
+- REST API
+- JWT Authentication
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/NEEXZEN/project-name.git
+cd project-name
+npm install
+npm start
