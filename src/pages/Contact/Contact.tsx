@@ -53,20 +53,22 @@ const Contact: React.FC = () => {
     setSubmitMessage(null);
 
     try {
+      const contactFormEndpoint = (import.meta.env.VITE_CONTACT_FORM_ENDPOINT || '').trim();
       const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '').trim();
       const normalizedApiBaseUrl = apiBaseUrl.endsWith('/') ? apiBaseUrl.slice(0, -1) : apiBaseUrl;
-      const contactEndpoint = normalizedApiBaseUrl ? `${normalizedApiBaseUrl}/api/contact` : '/api/contact';
+      const contactEndpoint = contactFormEndpoint || (normalizedApiBaseUrl ? `${normalizedApiBaseUrl}/api/contact` : '/api/contact');
 
       const response = await fetch(contactEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify(formData),
       });
 
       const contentType = response.headers.get('content-type') || '';
-      let result: { message?: string } = {};
+      let result: { message?: string; errors?: Array<{ message?: string }> } = {};
 
       if (contentType.includes('application/json')) {
         result = await response.json();
@@ -81,7 +83,8 @@ const Contact: React.FC = () => {
       }
 
       if (!response.ok) {
-        throw new Error(result.message || 'Unable to send your message right now.');
+        const providerError = result.errors?.find((item) => item?.message)?.message;
+        throw new Error(providerError || result.message || 'Unable to send your message right now.');
       }
 
       setSubmitMessage({ type: 'success', text: 'Thanks! Your message has been sent successfully.' });
