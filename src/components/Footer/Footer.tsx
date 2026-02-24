@@ -43,7 +43,11 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block">
-              <span className="text-2xl font-display font-bold text-white">neexzen</span>
+              <img
+                src="https://res.cloudinary.com/di1vdilgj/image/upload/v1771937476/Z-removebg-preview_ameczy.png"
+                alt="Neexzen Logo"
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="mt-6 text-neutral-400 text-sm leading-relaxed max-w-sm">
               Building breakthrough software solutions for the modern enterprise.
