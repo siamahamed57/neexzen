@@ -53,8 +53,11 @@ const Contact: React.FC = () => {
     setSubmitMessage(null);
 
     try {
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? '';
-      const response = await fetch(`${apiBaseUrl}/api/contact`, {
+      const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '').trim();
+      const normalizedApiBaseUrl = apiBaseUrl.endsWith('/') ? apiBaseUrl.slice(0, -1) : apiBaseUrl;
+      const contactEndpoint = normalizedApiBaseUrl ? `${normalizedApiBaseUrl}/api/contact` : '/api/contact';
+
+      const response = await fetch(contactEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +65,20 @@ const Contact: React.FC = () => {
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      let result: { message?: string } = {};
+
+      if (contentType.includes('application/json')) {
+        result = await response.json();
+      } else {
+        const responseText = await response.text();
+
+        if (responseText.toLowerCase().includes('<!doctype') || responseText.toLowerCase().includes('<html')) {
+          throw new Error('Contact API is not reachable from this domain. Please configure the production API URL.');
+        }
+
+        throw new Error('Unexpected server response. Please try again later.');
+      }
 
       if (!response.ok) {
         throw new Error(result.message || 'Unable to send your message right now.');
