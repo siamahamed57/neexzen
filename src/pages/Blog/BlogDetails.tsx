@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import {
     ArrowLeft, Clock, User, Calendar, Share2, Tag,
     BookOpen, ChevronRight, Copy, Check, ArrowRight, Sparkles,

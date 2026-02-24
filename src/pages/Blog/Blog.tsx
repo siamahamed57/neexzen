@@ -352,7 +352,7 @@ const Blog: React.FC = () => {
 
               {/* Asymmetric featured grid: big card left, 2 smaller right */}
               <div className="grid lg:grid-cols-3 gap-5 lg:grid-rows-2">
-                {featuredPosts.slice(0, 1).map((post, i) => (
+                {featuredPosts.slice(0, 1).map((post) => (
                   <FeaturedCard key={post.id} post={post} index={0} />
                 ))}
                 <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-5">

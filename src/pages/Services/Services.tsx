@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback, useEffect, useMemo } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, Code, Smartphone, Brain, Globe, ShoppingCart,
@@ -244,7 +244,7 @@ const ServiceDrawer: React.FC<{
               className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 border"
               style={{ color: theme.color, borderColor: `${theme.color}45`, background: theme.dim, boxShadow: `0 0 28px ${theme.glow}` }}
             >
-              {React.cloneElement(service.icon as React.ReactElement, { size: 22 })}
+              {React.createElement((service.icon as React.ReactElement<{ size?: number }>).type, { size: 22 })}
             </div>
 
             {/* Right: category + close */}

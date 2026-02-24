@@ -489,7 +489,7 @@ const Projects: React.FC = () => {
           {/* Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-32" style={{ perspective: 1200 }}>
             <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, i) => (
+              {filteredProjects.map((project) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
