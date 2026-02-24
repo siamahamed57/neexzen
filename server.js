@@ -23,9 +23,9 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/api/contact', async (req, res) => {
-  const { name, email, company, service, message } = req.body || {};
+  const { name, email, phone, company, service, message } = req.body || {};
 
-  if (!name || !email || !service || !message) {
+  if (!name || !email || !phone || !service || !message) {
     return res.status(400).json({ message: 'Please fill in all required fields.' });
   }
 
@@ -33,6 +33,7 @@ app.post('/api/contact', async (req, res) => {
     <h2>New Contact Message</h2>
     <p><strong>Name:</strong> ${name}</p>
     <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Phone:</strong> ${phone}</p>
     <p><strong>Company:</strong> ${company || 'N/A'}</p>
     <p><strong>Service:</strong> ${service}</p>
     <p><strong>Message:</strong></p>
@@ -46,7 +47,7 @@ app.post('/api/contact', async (req, res) => {
       replyTo: email,
       subject: `New Contact Form Submission - ${service}`,
       html: emailHtml,
-      text: `Name: ${name}\nEmail: ${email}\nCompany: ${company || 'N/A'}\nService: ${service}\n\nMessage:\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${company || 'N/A'}\nService: ${service}\n\nMessage:\n${message}`,
     });
 
     return res.status(200).json({ message: 'Email sent successfully.' });

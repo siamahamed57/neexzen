@@ -7,6 +7,7 @@ import CursorGlow from '../../components/CursorGlow/CursorGlow';
 type ContactFormState = {
   name: string;
   email: string;
+  phone: string;
   company: string;
   service: string;
   message: string;
@@ -19,6 +20,7 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = React.useState<ContactFormState>({
     name: '',
     email: '',
+    phone: '',
     company: '',
     service: '',
     message: '',
@@ -70,6 +72,7 @@ const Contact: React.FC = () => {
       setFormData({
         name: '',
         email: '',
+        phone: '',
         company: '',
         service: '',
         message: '',
@@ -147,6 +150,11 @@ const Contact: React.FC = () => {
                       <label htmlFor="email" className="block text-sm text-neutral-300 mb-2">Email Address</label>
                       <input type="email" id="email" className="input" placeholder="you@example.com" value={formData.email} onChange={handleInputChange} required />
                     </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block text-sm text-neutral-300 mb-2">Phone Number</label>
+                    <input type="tel" id="phone" className="input" placeholder="+8801XXXXXXXXX" value={formData.phone} onChange={handleInputChange} required />
                   </div>
 
                   <div>
