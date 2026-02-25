@@ -44,9 +44,9 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block">
               <img
-                src="https://res.cloudinary.com/di1vdilgj/image/upload/v1771937476/Z-removebg-preview_ameczy.png"
+                src="/NEEXZEN%20LOGO_LARGE.png"
                 alt="Neexzen Logo"
-                className="h-10 w-auto"
+                className="h-20 w-auto"
               />
             </Link>
             <p className="mt-6 text-neutral-400 text-sm leading-relaxed max-w-sm">

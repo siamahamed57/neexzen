@@ -140,9 +140,9 @@ const ProjectCard: React.FC<{ p: typeof topProjects[0]; index: number }> = ({ p,
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.3, delay: index * 0.08, ease: 'easeIn' }}
       className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
-      whileHover={{ y: -6, boxShadow: `0 0 0 1.5px ${p.color}55, 0 16px 48px ${p.glow}` }}
+      whileHover={{ y: -2, boxShadow: `0 0 0 1px ${p.color}30, 0 6px 16px rgba(0,0,0,0.28)` }}
     >
       <motion.img
         src={p.image}
@@ -154,7 +154,7 @@ const ProjectCard: React.FC<{ p: typeof topProjects[0]; index: number }> = ({ p,
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
       {/* Accent top */}
-      <motion.div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg,transparent,${p.color}80,transparent)` }} initial={{ opacity: 0.2 }} whileHover={{ opacity: 1 }} />
+      <motion.div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg,transparent,${p.color}60,transparent)` }} initial={{ opacity: 0.2 }} whileHover={{ opacity: 0.55 }} />
       {/* Category badge */}
       <div className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border backdrop-blur-md" style={{ color: p.color, borderColor: `${p.color}40`, background: 'rgba(0,0,0,0.65)' }}>
         {p.category}
@@ -392,11 +392,11 @@ const Home: React.FC = () => {
                   <motion.div
                     className="relative rounded-2xl overflow-hidden h-full flex flex-col p-7"
                     style={{ background: 'linear-gradient(160deg,#0e0e1c,#08080f)', boxShadow: '0 0 0 1px rgba(255,255,255,0.06)' }}
-                    whileHover={{ y: -6, boxShadow: `0 0 0 1.5px ${svc.color}50, 0 16px 48px ${svc.glow}` }}
-                    transition={{ duration: 0.3 }}
+                    whileHover={{ y: -2, boxShadow: `0 0 0 1px ${svc.color}30, 0 6px 16px rgba(0,0,0,0.28)` }}
+                    transition={{ duration: 0.2, ease: 'easeIn' }}
                   >
                     {/* Accent top bar */}
-                    <motion.div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg,transparent,${svc.color}80,transparent)` }} initial={{ opacity: 0.2 }} whileHover={{ opacity: 1 }} />
+                    <motion.div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg,transparent,${svc.color}60,transparent)` }} initial={{ opacity: 0.2 }} whileHover={{ opacity: 0.55 }} />
 
                     {/* Icon */}
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center border mb-6 transition-all duration-300" style={{ color: svc.color, borderColor: `${svc.color}35`, background: svc.dim }}>

@@ -70,9 +70,9 @@ const Navbar: React.FC = () => {
           <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-14 lg:h-16' : 'h-16 lg:h-20'}`}>
             <Link to="/" className="flex items-center gap-2 group">
               <img
-                src="https://res.cloudinary.com/di1vdilgj/image/upload/v1771938105/copy_of_z-removebg-preview_ameczy_f0a8c4.png"
+                src="/NEEXZEN%20LOGO_LARGE.png"
                 alt="Neexzen Logo"
-                className={`transition-all duration-300 w-200px ${isScrolled ? 'h-20' : 'h-24'}`}
+                className={`transition-all duration-300 w-200px ${isScrolled ? 'h-10' : 'h-12'}`}
               />
             </Link>
 

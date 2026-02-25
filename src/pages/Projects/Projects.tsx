@@ -453,7 +453,7 @@ const Projects: React.FC = () => {
   return (
     <main className="bg-black text-white">
       {/* Hero */}
-      <section ref={heroRef} className="relative min-h-fit md:min-h-screen flex items-center overflow-hidden py-12 md:py-16 lg:py-20">
+      <section ref={heroRef} className="relative min-h-fit md:min-h-[80vh] flex items-center overflow-hidden py-8 md:py-10 lg:py-12">
         <CursorGlow containerRef={heroRef} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[150px] animate-subtle-glow" />
