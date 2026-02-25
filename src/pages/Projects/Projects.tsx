@@ -41,14 +41,16 @@ const ProjectCard: React.FC<{
 
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const rotX = useSpring(useTransform(my, [-60, 60], [8, -8]), { stiffness: 200, damping: 22 });
-  const rotY = useSpring(useTransform(mx, [-60, 60], [-8, 8]), { stiffness: 200, damping: 22 });
+  const rotX = useSpring(useTransform(my, [-1, 1], [4, -4]), { stiffness: 170, damping: 24 });
+  const rotY = useSpring(useTransform(mx, [-1, 1], [-4, 4]), { stiffness: 170, damping: 24 });
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const r = cardRef.current?.getBoundingClientRect();
     if (!r) return;
-    mx.set(e.clientX - r.left - r.width / 2);
-    my.set(e.clientY - r.top - r.height / 2);
+    const normalizedX = ((e.clientX - r.left) / r.width) * 2 - 1;
+    const normalizedY = ((e.clientY - r.top) / r.height) * 2 - 1;
+    mx.set(Math.max(-1, Math.min(1, normalizedX)));
+    my.set(Math.max(-1, Math.min(1, normalizedY)));
   };
   const onLeave = () => { mx.set(0); my.set(0); setIsHovered(false); };
 
@@ -66,23 +68,30 @@ const ProjectCard: React.FC<{
       onMouseLeave={onLeave}
       onClick={onClick}
       className="group relative rounded-2xl overflow-hidden cursor-pointer"
-      whileHover={{ y: -6 }}
+      whileHover={{ scale: 1.01 }}
     >
       {/* Card shell */}
       <motion.div
         className="relative rounded-2xl overflow-hidden"
         animate={isHovered
-          ? { boxShadow: `0 0 0 1.5px ${accent.color}55, 0 20px 60px ${accent.glow}, 0 4px 20px rgba(0,0,0,0.6)` }
+          ? { boxShadow: `0 0 0 1.2px ${accent.color}45, 0 12px 36px ${accent.glow}, 0 3px 14px rgba(0,0,0,0.55)` }
           : { boxShadow: '0 0 0 1px rgba(255,255,255,0.07), 0 4px 20px rgba(0,0,0,0.5)' }
         }
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.3 }}
       >
         {/* Accent top bar */}
         <motion.div
           className="absolute top-0 left-0 right-0 h-[3px] z-30"
           style={{ background: `linear-gradient(90deg, transparent, ${accent.color}, transparent)` }}
-          animate={{ opacity: isHovered ? 1 : 0.3 }}
-          transition={{ duration: 0.3 }}
+          animate={{ opacity: isHovered ? 0.75 : 0.3 }}
+          transition={{ duration: 0.25 }}
+        />
+
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[3px] z-30"
+          style={{ background: `linear-gradient(90deg, transparent, ${accent.color}, transparent)` }}
+          animate={{ opacity: isHovered ? 0.75 : 0.3 }}
+          transition={{ duration: 0.25 }}
         />
 
         {/* Image area */}
@@ -92,21 +101,21 @@ const ProjectCard: React.FC<{
             alt={project.title}
             className="w-full h-full object-cover"
             animate={isHovered
-              ? { scale: 1.08, filter: 'grayscale(0%) brightness(0.75)' }
-              : { scale: 1, filter: 'grayscale(50%) brightness(0.6)' }
+              ? { scale: 1.03, filter: 'grayscale(0%) brightness(0.82)' }
+              : { scale: 1, filter: 'grayscale(35%) brightness(0.68)' }
             }
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           />
 
           {/* Scan line sweep */}
           <motion.div
             className="absolute inset-0 pointer-events-none z-10"
             style={{
-              background: `linear-gradient(180deg, transparent 0%, ${accent.color}22 50%, transparent 100%)`,
+              background: `linear-gradient(180deg, transparent 0%, ${accent.color}16 50%, transparent 100%)`,
               backgroundSize: '100% 40px',
             }}
             animate={isHovered ? { backgroundPositionY: ['0px', '208px'] } : { backgroundPositionY: '0px' }}
-            transition={{ duration: 0.9, repeat: isHovered ? Infinity : 0, ease: 'linear' }}
+            transition={{ duration: 0.75, repeat: 0, ease: 'linear' }}
           />
 
           {/* Colored tint on hover */}
@@ -114,15 +123,15 @@ const ProjectCard: React.FC<{
             className="absolute inset-0 z-10 pointer-events-none"
             style={{ background: `radial-gradient(ellipse at center, ${accent.color}22, transparent 70%)` }}
             animate={{ opacity: isHovered ? 1 : 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3 }}
           />
 
           {/* Top-left category badge */}
           <motion.div
             className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-md border"
             style={{ color: accent.color, borderColor: `${accent.color}40`, background: 'rgba(0,0,0,0.55)' }}
-            animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0.7, y: -3 }}
-            transition={{ duration: 0.3 }}
+            animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0.85, y: -2 }}
+            transition={{ duration: 0.25 }}
           >
             <Zap size={9} />
             {project.category}
@@ -140,9 +149,12 @@ const ProjectCard: React.FC<{
           <motion.div
             className="absolute bottom-3 right-3 z-20 w-8 h-8 rounded-full flex items-center justify-center"
             style={{ background: accent.color }}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={isHovered ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            initial={{ scale: 0, opacity: 0, x: 4, y: 4, rotate: -4 }}
+            animate={isHovered
+              ? { scale: 1, opacity: 1, x: 0, y: 0, rotate: 0 }
+              : { scale: 0, opacity: 0, x: 4, y: 4, rotate: -4 }
+            }
+            transition={{ type: 'spring', stiffness: 240, damping: 24 }}
           >
             <ArrowUpRight size={14} color="#000" />
           </motion.div>
@@ -156,7 +168,9 @@ const ProjectCard: React.FC<{
           {/* Subtle accent glow behind text area */}
           <motion.div
             className="absolute inset-0 pointer-events-none"
-            style={{ background: `radial-gradient(ellipse at 50% -20%, ${accent.color}14, transparent 70%)` }}
+            style={{
+              background: `radial-gradient(ellipse at 50% -20%, ${accent.color}14, transparent 70%), radial-gradient(ellipse at 50% 120%, ${accent.color}14, transparent 70%)`,
+            }}
             animate={{ opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.4 }}
           />
