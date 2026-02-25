@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
               <img
                 src="https://res.cloudinary.com/di1vdilgj/image/upload/v1771938105/copy_of_z-removebg-preview_ameczy_f0a8c4.png"
                 alt="Neexzen Logo"
-                className={`transition-all duration-300 w-200px ${isScrolled ? 'h-10' : 'h-14'}`}
+                className={`transition-all duration-300 w-200px ${isScrolled ? 'h-20' : 'h-24'}`}
               />
             </Link>
 
