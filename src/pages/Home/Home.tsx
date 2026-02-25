@@ -463,8 +463,8 @@ const Home: React.FC = () => {
                   <motion.div
                     className="relative w-20 h-20 rounded-2xl flex items-center justify-center mb-6 flex-shrink-0 border"
                     style={{ background: 'linear-gradient(135deg,#0e0e1c,#070710)', borderColor: 'rgba(167,139,250,0.2)' }}
-                    whileHover={{ boxShadow: '0 0 0 1.5px rgba(167,139,250,0.5), 0 8px 32px rgba(167,139,250,0.3)', y: -3 }}
-                    transition={{ duration: 0.3 }}
+                    whileHover={{ boxShadow: '0 0 0 1.5px rgba(167,139,250,0.45)', scale: 1.02 }}
+                    transition={{ duration: 0.2, ease: 'easeIn' }}
                   >
                     <span className="font-display text-2xl font-black" style={{ color: 'rgba(167,139,250,0.4)' }}>{step.number}</span>
                   </motion.div>
