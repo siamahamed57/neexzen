@@ -53,8 +53,7 @@ const Contact: React.FC = () => {
     setSubmitMessage(null);
 
     try {
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL ?? '';
-      const response = await fetch(`${apiBaseUrl}/api/contact`, {
+      const response = await fetch(`/api/contact.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -144,22 +143,22 @@ const Contact: React.FC = () => {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm text-neutral-300 mb-2">Your Name</label>
-                      <input type="text" id="name" className="input" placeholder="John Doe" value={formData.name} onChange={handleInputChange} required />
+                      <input type="text" id="name" className="input" placeholder="Enter your name" value={formData.name} onChange={handleInputChange} required />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm text-neutral-300 mb-2">Email Address</label>
-                      <input type="email" id="email" className="input" placeholder="you@example.com" value={formData.email} onChange={handleInputChange} required />
+                      <input type="email" id="email" className="input" placeholder="Enter your email" value={formData.email} onChange={handleInputChange} required />
                     </div>
                   </div>
 
                   <div>
                     <label htmlFor="phone" className="block text-sm text-neutral-300 mb-2">Phone Number</label>
-                    <input type="tel" id="phone" className="input" placeholder="+8801XXXXXXXXX" value={formData.phone} onChange={handleInputChange} required />
+                    <input type="tel" id="phone" className="input" placeholder="+8801712345678" value={formData.phone} onChange={handleInputChange} required />
                   </div>
 
                   <div>
                     <label htmlFor="company" className="block text-sm text-neutral-300 mb-2">Company (Optional)</label>
-                    <input type="text" id="company" className="input" placeholder="Your Company" value={formData.company} onChange={handleInputChange} />
+                    <input type="text" id="company" className="input" placeholder="Enter your company name" value={formData.company} onChange={handleInputChange} />
                   </div>
 
                   <div>
