@@ -55,7 +55,7 @@ const About: React.FC = () => {
   return (
     <main className="bg-black text-white">
       {/* ── HERO (UNCHANGED) ── */}
-      <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-fit md:min-h-[60vh] flex items-center overflow-hidden py-12 md:py-16 lg:py-20">
         <CursorGlow containerRef={heroRef} />
 
         {/* Background Gradients */}
@@ -66,7 +66,7 @@ const About: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Content */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-xl">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
@@ -90,7 +90,7 @@ const About: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
-              className="h-[500px] w-full relative"
+              className="hidden md:block h-[500px] w-full relative"
             />
           </div>
         </div>
@@ -99,7 +99,7 @@ const About: React.FC = () => {
       {/* ════════════════════════════════════════
           MISSION & VISION — redesigned
       ════════════════════════════════════════ */}
-      <section className="relative py-28 overflow-hidden border-t border-neutral-800/50">
+      <section className="relative py-16 md:py-20 lg:py-28 overflow-hidden border-t border-neutral-800/50\">
         {/* Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-600/6 rounded-full blur-[160px]" />
@@ -108,7 +108,7 @@ const About: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <motion.div {...fadeUp(0)} className="text-center mb-20">
+          <motion.div {...fadeUp(0)} className="text-center mb-12 md:mb-16 lg:mb-20\">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-black tracking-[0.18em] uppercase mb-5" style={{ background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.22)', color: '#a78bfa' }}>
               <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
               What Drives Us

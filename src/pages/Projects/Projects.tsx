@@ -439,7 +439,7 @@ const Projects: React.FC = () => {
   return (
     <main className="bg-black text-white">
       {/* Hero */}
-      <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden bg-black">
+      <section ref={heroRef} className="relative min-h-fit md:min-h-screen flex items-center overflow-hidden py-12 md:py-16 lg:py-20">
         <CursorGlow containerRef={heroRef} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-1/4 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[150px] animate-subtle-glow" />
@@ -447,7 +447,7 @@ const Projects: React.FC = () => {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:80px_80px]" />
         </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-xl">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
                 <span className="text-sm text-blue-300">Our Work</span>
@@ -460,7 +460,7 @@ const Projects: React.FC = () => {
                 Explore our portfolio of innovative solutions that have transformed businesses and delighted users.
               </p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }} className="h-[500px] w-full relative" />
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }} className="hidden md:block h-[500px] w-full relative" />
           </div>
         </div>
       </section>

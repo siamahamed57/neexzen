@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
   return (
     <main className="bg-black text-white">
       {/* Hero */}
-      <section ref={heroRef} className="relative min-h-[50vh] flex items-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[50vh] md:min-h-[60vh] flex items-center overflow-hidden py-12 md:py-16 lg:py-20">
         <CursorGlow containerRef={heroRef} />
 
         {/* Background Gradients */}
@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Content */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-xl">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6 backdrop-blur-sm">
@@ -142,7 +142,7 @@ const Contact: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
-              className="h-[500px] w-full relative"
+              className="hidden md:block h-[500px] w-full relative"
             >
               {/* <ContactHero3D /> */}
             </motion.div>
@@ -151,19 +151,19 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Form & Info */}
-      <section className="py-20 border-t border-neutral-800">
+      <section className="py-12 md:py-16 lg:py-20 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-16">
+          <div className="grid lg:grid-cols-5 gap-8 md:gap-12 lg:gap-16">
             {/* Form */}
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="lg:col-span-3">
-              <div className="p-10 rounded-2xl bg-neutral-900/50 border border-neutral-800">
+              <div className="p-6 md:p-8 lg:p-10 rounded-2xl bg-neutral-900/50 border border-neutral-800">
                 <h2 className="font-display text-2xl font-bold text-white mb-8">Send us a message</h2>
 
                 <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm text-neutral-300 mb-2">Your Name</label>
-                      <input type="text" id="name" className="input" placeholder="John Doe" value={formData.name} onChange={handleInputChange} required />
+                      <input type="text" id="name" className="input" placeholder="Your Name" value={formData.name} onChange={handleInputChange} required />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm text-neutral-300 mb-2">Email Address</label>
