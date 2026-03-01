@@ -11,9 +11,9 @@ import Hero3D from '../../components/Hero3D/Hero3D';
 
 /* ─── Data ─── */
 const stats = [
-  { num: 15, suffix: '+', label: 'Projects Delivered', desc: 'End-to-end products shipped across 5+ countries.', color: '#a78bfa', bg: 'rgba(167,139,250,0.06)', border: 'rgba(167,139,250,0.18)' },
-  { num: 20, suffix: '+', label: 'Happy Clients', desc: 'Long-term partnerships built on trust & results.', color: '#38bdf8', bg: 'rgba(56,189,248,0.06)', border: 'rgba(56,189,248,0.18)' },
-  { num: 5, suffix: '+', label: 'Years of Expertise', desc: 'Deep mastery in software, AI & digital strategy.', color: '#34d399', bg: 'rgba(52,211,153,0.06)', border: 'rgba(52,211,153,0.18)' },
+  { num: 15, suffix: '+', label: 'Projects Delivered', desc: 'End-to-end products shipped across 5+ countries.', color: '#ffffffff', bg: 'rgba(255, 255, 255, 0.06)', border: 'rgba(167,139,250,0.18)' },
+  { num: 20, suffix: '+', label: 'Happy Clients', desc: 'Long-term partnerships built on trust & results.', color: '#ffffffff', bg: 'rgba(255, 255, 255, 0.06)', border: 'rgba(255, 255, 255, 0.18)' },
+  { num: 5, suffix: '+', label: 'Years of Expertise', desc: 'Deep mastery in software, AI & digital strategy.', color: '#ffffffff', bg: 'rgba(52,211,153,0.06)', border: 'rgba(255, 255, 255, 0.18)' },
 ];
 
 const topProjects = [
@@ -294,7 +294,7 @@ const Home: React.FC = () => {
                 <span
                   className="block"
                   style={{
-                    background: 'linear-gradient(90deg, #a78bfa 0%, #38bdf8 50%, #34d399 100%)',
+                    background: 'linear-gradient(90deg, #a78bfa 0%, #a78bfa 50%, #a78bfa 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',

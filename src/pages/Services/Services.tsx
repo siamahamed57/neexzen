@@ -426,7 +426,7 @@ const Services: React.FC = () => {
               <span className="text-sm text-purple-300">What We Do</span>
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }} className="hero-title">
-              <span className="text-white">Comprehensive</span><br />
+              <span className="text-white">Pick Your</span><br />
               <span className="text-shimmer">Services</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="hero-subtitle mt-6 text-neutral-300 max-w-2xl">
