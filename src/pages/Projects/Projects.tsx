@@ -1,7 +1,7 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ExternalLink, Globe, X, Zap, Code2, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ExternalLink, Globe, X, Zap, Code2, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import CursorGlow from '../../components/CursorGlow/CursorGlow';
 
 /* ─── Data ─── */
@@ -16,13 +16,32 @@ const ACCENTS = [
 ];
 
 const projects = [
-  { id: 1, title: 'Unies', category: 'PWA Application', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708404/Screenshot_2026-02-16_at_11.06.49_PM_n4djxo.png', technologies: ['GSAP', 'PHP', 'HTML', 'CSS', 'JS', 'MySQL'], description: 'Advanced E-Learning Platform with DRM, Session Management, Advanced Security Features, Login Restrictions, Quiz, Assignment, Lessons, QNA and many more features.', link: 'https://unies.com.bd', tagline: 'E-Learning Reimagined' },
-  { id: 2, title: 'Uixpertise', category: 'WordPress Dev', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708404/Screenshot_2026-02-16_at_11.07.38_PM_v5n4hb.png', technologies: ['WordPress', 'Custom Plugin', 'Elementor Pro', 'Custom Code'], description: 'Figma to WordPress — a scalable digital designer website crafted for premium brand identity.', link: 'https://uixpertise.com', tagline: 'Design Meets Function' },
-  { id: 3, title: 'Lyvaa', category: 'E-Commerce', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771911849/Screenshot_2026-02-16_at_11.09.54_PM_zrj1xi.png', technologies: ['WordPress', 'Custom Plugin', 'Custom Theme', 'SSL Payment', 'Social Login'], description: 'Full-featured E-Commerce platform with product add-ons, live preview, and secure checkout flow.', link: 'https://lyvaa.com', tagline: 'Shop the Future' },
-  { id: 4, title: 'Tusqa Well Being', category: 'Well Being Platform', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708402/Screenshot_2026-02-16_at_11.12.05_PM_nxlfzv.png', technologies: ['React Native', 'Firebase', 'GraphQL'], description: 'Cross-platform health tracking app that empowers users to manage their wellbeing seamlessly.', link: 'https://tusqawellbeing.com/', tagline: 'Your Health, Elevated' },
-  { id: 5, title: 'Achol Computers', category: 'E-commerce Store', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708404/Screenshot_2026-02-16_at_11.10.39_PM_opygtr.png', technologies: ['React js', 'Node js', 'Mongobd', 'Firebase'], description: 'Modern Electronics E-commerce website', link: 'https://acholcomputer.com', tagline: 'Tech Meets Creativity' },
-  { id: 6, title: 'Being Smile', category: 'Crowed Funding Website', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708404/Screenshot_2026-02-16_at_11.11.31_PM_lqwd4s.png', technologies: ['React js', 'Node js', 'Mongobd', 'Firebase'], description: 'Digital Crowd Funding website', link: 'https://beingsmile.org', tagline: 'Smart. Fast. Reliable.' },
-  { id: 7, title: 'Neexzen', category: 'Software Company', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708388/Screenshot_2026-02-16_at_11.07.58_PM_ogelmn.png', technologies: ['React js', 'Fremer Motion', 'Three js', 'Node js', 'Mongobd', 'Firebase', 'TailwindCSS', 'Gsap'], description: 'Our own digital studio portfolio — a high-performance, animated web experience showcasing our brand, services, and creative projects.', link: '#', tagline: 'We Build What Inspires' },
+  { 
+    id: 1, 
+    title: 'Quikey Store', 
+    category: 'SaaS Platform', 
+    image: 'https://res.cloudinary.com/avprvpjk/image/upload/v1785667311/WhatsApp_Image_2026-08-02_at_16.32.24_b57lmz.jpg', 
+    images: [
+      'https://res.cloudinary.com/avprvpjk/image/upload/v1785667311/WhatsApp_Image_2026-08-02_at_16.32.24_b57lmz.jpg',
+      'https://res.cloudinary.com/avprvpjk/image/upload/v1785667310/WhatsApp_Image_2026-08-02_at_16.32.23_3_l4uqxo.jpg',
+      'https://res.cloudinary.com/avprvpjk/image/upload/v1785667309/WhatsApp_Image_2026-08-02_at_16.32.23_2_cdsq4n.jpg',
+      'https://res.cloudinary.com/avprvpjk/image/upload/v1785667310/WhatsApp_Image_2026-08-02_at_16.32.24_1_lbkydo.jpg',
+      'https://res.cloudinary.com/avprvpjk/image/upload/v1785667310/WhatsApp_Image_2026-08-02_at_16.32.23_znxrad.jpg',
+      'https://res.cloudinary.com/avprvpjk/image/upload/v1785667309/WhatsApp_Image_2026-08-02_at_16.32.22_firsoq.jpg',
+      'https://res.cloudinary.com/avprvpjk/image/upload/v1785667309/WhatsApp_Image_2026-08-02_at_16.32.23_1_qqqijl.jpg'
+    ],
+    technologies: ['No-Code', 'SaaS', 'E-commerce'], 
+    description: 'Quikey.store is a No-Code SaaS eCommerce platform that lets you launch your online store in just 2–3 minutes. Simply choose a theme, customize it, and start selling—no coding required.', 
+    link: 'https://quikey.store', 
+    tagline: 'Launch in Minutes' 
+  },
+  { id: 2, title: 'Unies', category: 'PWA Application', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708404/Screenshot_2026-02-16_at_11.06.49_PM_n4djxo.png', technologies: ['GSAP', 'PHP', 'HTML', 'CSS', 'JS', 'MySQL'], description: 'Advanced E-Learning Platform with DRM, Session Management, Advanced Security Features, Login Restrictions, Quiz, Assignment, Lessons, QNA and many more features.', link: 'https://unies.com.bd', tagline: 'E-Learning Reimagined' },
+  { id: 3, title: 'Uixpertise', category: 'WordPress Dev', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708404/Screenshot_2026-02-16_at_11.07.38_PM_v5n4hb.png', technologies: ['WordPress', 'Custom Plugin', 'Elementor Pro', 'Custom Code'], description: 'Figma to WordPress — a scalable digital designer website crafted for premium brand identity.', link: 'https://uixpertise.com', tagline: 'Design Meets Function' },
+  { id: 4, title: 'Lyvaa', category: 'E-Commerce', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771911849/Screenshot_2026-02-16_at_11.09.54_PM_zrj1xi.png', technologies: ['WordPress', 'Custom Plugin', 'Custom Theme', 'SSL Payment', 'Social Login'], description: 'Full-featured E-Commerce platform with product add-ons, live preview, and secure checkout flow.', link: 'https://lyvaa.com', tagline: 'Shop the Future' },
+  { id: 5, title: 'Tusqa Well Being', category: 'Well Being Platform', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708402/Screenshot_2026-02-16_at_11.12.05_PM_nxlfzv.png', technologies: ['React Native', 'Firebase', 'GraphQL'], description: 'Cross-platform health tracking app that empowers users to manage their wellbeing seamlessly.', link: 'https://tusqawellbeing.com/', tagline: 'Your Health, Elevated' },
+  { id: 6, title: 'Achol Computers', category: 'E-commerce Store', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708404/Screenshot_2026-02-16_at_11.10.39_PM_opygtr.png', technologies: ['React js', 'Node js', 'Mongobd', 'Firebase'], description: 'Modern Electronics E-commerce website', link: 'https://acholcomputer.com', tagline: 'Tech Meets Creativity' },
+  { id: 7, title: 'Being Smile', category: 'Crowed Funding Website', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708404/Screenshot_2026-02-16_at_11.11.31_PM_lqwd4s.png', technologies: ['React js', 'Node js', 'Mongobd', 'Firebase'], description: 'Digital Crowd Funding website', link: 'https://beingsmile.org', tagline: 'Smart. Fast. Reliable.' },
+  { id: 8, title: 'Neexzen', category: 'Software Company', image: 'https://res.cloudinary.com/di1vdilgj/image/upload/v1771708388/Screenshot_2026-02-16_at_11.07.58_PM_ogelmn.png', technologies: ['React js', 'Fremer Motion', 'Three js', 'Node js', 'Mongobd', 'Firebase', 'TailwindCSS', 'Gsap'], description: 'Our own digital studio portfolio — a high-performance, animated web experience showcasing our brand, services, and creative projects.', link: '#', tagline: 'We Build What Inspires' },
 ];
 
 const CATEGORIES = ['All', 'AI & ML', 'Cloud', 'Web Apps', 'Mobile', 'Design'];
@@ -237,11 +256,13 @@ const ProjectCard: React.FC<{
 
 /* ─── Centered Modal Popup ─── */
 const ProjectModal: React.FC<{
-  project: Project;
+  project: Project & { images?: string[] };
   index: number;
   onClose: () => void;
 }> = ({ project, index, onClose }) => {
   const accent = ACCENTS[index % ACCENTS.length];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = project.images && project.images.length > 0 ? project.images : [project.image];
 
   return (
     <motion.div
@@ -301,14 +322,33 @@ const ProjectModal: React.FC<{
           {/* Left – image */}
           <div className="md:w-[45%] relative overflow-hidden min-h-[240px] md:min-h-full">
             <motion.img
-              src={project.image}
+              key={currentImageIndex}
+              src={images[currentImageIndex]}
               alt={project.title}
               className="w-full h-full object-cover"
               style={{ minHeight: 260 }}
-              initial={{ scale: 1.1, filter: 'blur(8px)' }}
-              animate={{ scale: 1, filter: 'blur(0px)' }}
+              initial={{ scale: 1.1, filter: 'blur(8px)', opacity: 0 }}
+              animate={{ scale: 1, filter: 'blur(0px)', opacity: 1 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             />
+
+            {/* Slider Controls */}
+            {images.length > 1 && (
+              <div className="absolute bottom-4 right-4 z-20 flex gap-2">
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(prev => (prev - 1 + images.length) % images.length); }} 
+                  className="w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center backdrop-blur-md hover:bg-black/70 border border-white/10 transition-all"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(prev => (prev + 1) % images.length); }} 
+                  className="w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center backdrop-blur-md hover:bg-black/70 border border-white/10 transition-all"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            )}
             {/* Gradient fade right */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0d0d18] hidden md:block" />
             {/* Gradient fade bottom */}
